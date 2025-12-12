@@ -30,10 +30,13 @@
     </div>
 
     <div class="controls">
-      <button id="themeToggle" class="btn">🌙</button>
-      <button id="textSmall" class="btn">A-</button>
-      <button id="textNormal" class="btn">A</button>
-      <button id="textLarge" class="btn">A+</button>
+      <!-- NEW: Feedback button -->
+      <button id="feedbackOpen" class="btn" type="button">Feedback</button>
+
+      <button id="themeToggle" class="btn" type="button">🌙</button>
+      <button id="textSmall" class="btn" type="button">A-</button>
+      <button id="textNormal" class="btn" type="button">A</button>
+      <button id="textLarge" class="btn" type="button">A+</button>
     </div>
   </div>
 </header>
@@ -128,75 +131,11 @@
     <p><strong>Phone:</strong> <a href="tel:15612872724">(561) 287-2724</a></p>
     <p>
       <strong>LinkedIn:</strong>
-      <a href="https://www.linkedin.com/in/adel-marcano-000429379" target="_blank">
+      <a href="https://www.linkedin.com/in/adel-marcano-000429379" target="_blank" rel="noreferrer">
         linkedin.com/in/adel-marcano-000429379
       </a>
     </p>
   </section>
-
-  <!-- ===== Feedback Modal (Netlify Form) ===== -->
-  <div class="modal" id="feedbackModal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
-      <button class="modal-close" id="feedbackClose" aria-label="Close feedback form">✕</button>
-
-      <h3 id="feedbackTitle">Quick Feedback</h3>
-      <p class="modal-sub">
-        What did you like, what did you view, and what can I improve?
-      </p>
-
-      <form name="website-feedback"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="/thanks.html">
-
-        <input type="hidden" name="form-name" value="website-feedback">
-
-        <p class="hidden">
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
-
-        <label class="field">
-          What did you like most?
-          <select name="liked_most" required>
-            <option value="" disabled selected>Select one</option>
-            <option>Design / Layout</option>
-            <option>Cybersecurity / IT</option>
-            <option>Game Development</option>
-            <option>Web Page Design</option>
-            <option>Overall presentation</option>
-          </select>
-        </label>
-
-        <fieldset class="field">
-          <legend>Which pages did you view?</legend>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Home"> Home</label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="About"> About</label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Cybersecurity/IT"> Cybersecurity/IT</label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Game Development"> Game Development</label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Web Page Design"> Web Page Design</label>
-        </fieldset>
-
-        <label class="field">
-          Comment (optional)
-          <textarea name="comment" rows="4" maxlength="800"
-                    placeholder="One suggestion that would make this site better..."></textarea>
-        </label>
-
-        <label class="field">
-          Your email (optional)
-          <input type="email" name="reply_to" placeholder="so I can follow up (optional)">
-        </label>
-
-        <button class="card-btn" type="submit">Send Feedback</button>
-
-        <p class="modal-foot">
-          No trackers. This form is sent through Netlify Forms.
-        </p>
-      </form>
-    </div>
-  </div>
-  <!-- ===== End Feedback Modal ===== -->
 
   <footer class="site-footer">
     <div class="container">
@@ -205,6 +144,60 @@
   </footer>
 
 </main>
+
+<!-- ===== Feedback Modal (Netlify form) ===== -->
+<div id="feedbackModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+  <div class="modal-card">
+    <button id="feedbackClose" class="modal-close" type="button" aria-label="Close">×</button>
+
+    <h2 id="feedbackTitle">Quick Feedback</h2>
+    <p class="modal-sub">What did you like, what did you view, and what can I improve?</p>
+
+    <!-- Netlify Forms -->
+    <form name="website-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="website-feedback" />
+      <p class="hidden">
+        <label>Don’t fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <label class="field">
+        What did you like most?
+        <select name="liked_most" required>
+          <option value="" selected disabled>Select one</option>
+          <option>Design / Layout</option>
+          <option>Cybersecurity / IT content</option>
+          <option>Game Development content</option>
+          <option>Web Page Design content</option>
+          <option>Overall professionalism</option>
+        </select>
+      </label>
+
+      <!-- FIXED: checkbox layout -->
+      <fieldset class="field">
+        <legend>Which pages did you view?</legend>
+
+        <div class="check-grid">
+          <label class="check"><input type="checkbox" name="viewed_pages" value="Home"> <span>Home</span></label>
+          <label class="check"><input type="checkbox" name="viewed_pages" value="About"> <span>About</span></label>
+          <label class="check"><input type="checkbox" name="viewed_pages" value="Cybersecurity/IT"> <span>Cybersecurity/IT</span></label>
+          <label class="check"><input type="checkbox" name="viewed_pages" value="Game Development"> <span>Game Development</span></label>
+          <label class="check"><input type="checkbox" name="viewed_pages" value="Web Page Design"> <span>Web Page Design</span></label>
+        </div>
+      </fieldset>
+
+      <label class="field">
+        Comment (optional)
+        <textarea name="comment" rows="4" placeholder="One suggestion that would make this site better..."></textarea>
+      </label>
+
+      <button type="submit" class="card-btn">Send</button>
+
+      <p class="modal-foot">
+        This form is handled by Netlify. Thanks for helping me improve.
+      </p>
+    </form>
+  </div>
+</div>
 
 </body>
 </html>
