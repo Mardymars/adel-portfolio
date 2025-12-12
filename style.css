@@ -257,3 +257,70 @@ a:hover{ text-decoration:underline; }
   .hero-text h2{ font-size:2.2rem; }
   .hero-text p{ font-size:1.1rem; }
 }
+
+/* ===== Feedback Modal ===== */
+.hidden{ display:none; }
+
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:rgba(0,0,0,0.55);
+  padding:16px;
+  z-index:9999;
+}
+
+.modal.open{ display:grid; }
+
+.modal-card{
+  width:min(640px, 100%);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:18px;
+  padding:18px;
+  border:1px solid var(--border);
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  position:relative;
+}
+
+.modal-sub{ margin-top:6px; color:var(--muted); }
+
+.modal-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:10px;
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+.field{ display:grid; gap:6px; margin-top:12px; }
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  font:inherit;
+  background:transparent;
+  color:inherit;
+}
+
+.check{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:6px;
+}
+
+.modal-foot{
+  margin-top:10px;
+  font-size:0.9em;
+  color:var(--muted);
+}
