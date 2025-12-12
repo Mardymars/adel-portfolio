@@ -224,6 +224,7 @@ body.dark{
   background:transparent;
   text-decoration:none;
   color:var(--text);
+  cursor:pointer;
 }
 
 .card-btn:hover{
@@ -245,9 +246,7 @@ a:hover{ text-decoration:underline; }
 
 /* MOBILE */
 @media (max-width:900px){
-  .cards{
-    grid-template-columns: 1fr;
-  }
+  .cards{ grid-template-columns: 1fr; }
 
   .hero-carousel{
     height:65vh;
@@ -274,7 +273,7 @@ a:hover{ text-decoration:underline; }
 .modal.open{ display:grid; }
 
 .modal-card{
-  width:min(640px, 100%);
+  width:min(680px, 100%);
   background:var(--surface);
   color:var(--text);
   border-radius:18px;
@@ -284,7 +283,10 @@ a:hover{ text-decoration:underline; }
   position:relative;
 }
 
-.modal-sub{ margin-top:6px; color:var(--muted); }
+.modal-sub{
+  margin-top:6px;
+  color:var(--muted);
+}
 
 .modal-close{
   position:absolute;
@@ -298,7 +300,11 @@ a:hover{ text-decoration:underline; }
   cursor:pointer;
 }
 
-.field{ display:grid; gap:6px; margin-top:12px; }
+.field{
+  display:grid;
+  gap:6px;
+  margin-top:12px;
+}
 
 .field input,
 .field select,
@@ -312,11 +318,46 @@ a:hover{ text-decoration:underline; }
   color:inherit;
 }
 
+fieldset.field{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+}
+
+fieldset.field legend{
+  padding:0 8px;
+  color:var(--muted);
+}
+
+.check-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px 14px;
+  margin-top:6px;
+}
+
+@media (max-width:560px){
+  .check-grid{ grid-template-columns:1fr; }
+}
+
 .check{
   display:flex;
-  gap:8px;
   align-items:center;
-  margin-top:6px;
+  gap:10px;
+  margin:0;
+  padding:8px 10px;
+  border-radius:12px;
+  border:1px solid transparent;
+}
+
+.check input{
+  width:18px;
+  height:18px;
+  margin:0;
+}
+
+.check:hover{
+  border-color: var(--border);
 }
 
 .modal-foot{
