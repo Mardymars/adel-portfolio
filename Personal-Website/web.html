@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Page Design – Adel Marcano</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">
+      <div>
+        <h1 class="name">Adel Marcano</h1>
+        <p class="tagline">IT • Cybersecurity • Game Development • Web Design</p>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="cybersecurity.html">Cybersecurity/IT</a>
+        <a class="nav-link" href="gamedev.html">Game Development</a>
+        <a class="nav-link" href="web.html">Web Page Design</a>
+        <a class="nav-link" href="media.html">Media</a>
+        <a class="nav-link" href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="controls" aria-label="Display settings">
+      <button id="themeToggle" type="button" class="btn" aria-label="Toggle theme">🌙</button>
+      <button id="textSmall" type="button" class="btn" aria-label="Smaller text">A-</button>
+      <button id="textNormal" type="button" class="btn" aria-label="Normal text">A</button>
+      <button id="textLarge" type="button" class="btn" aria-label="Larger text">A+</button>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+
+  <section class="container">
+    <h2>Web Page Design</h2>
+    <p>
+      This website is an active example of my web design work. I build clean,
+      readable layouts with accessibility in mind, and I’m comfortable creating
+      and organizing multi-page sites with consistent design.
+    </p>
+  </section>
+
+  <section class="container">
+    <h3>What I Can Do</h3>
+    <ul>
+      <li>Build multi-page websites with consistent navigation and structure</li>
+      <li>Create responsive layouts that work on desktop and mobile</li>
+      <li>Write semantic HTML for clarity and accessibility</li>
+      <li>Style modern UIs with CSS (layout, spacing, typography, cards, sections)</li>
+      <li>Use JavaScript for interactive UI features (carousel, theme toggle, settings)</li>
+      <li>Implement accessibility features (text resizing, keyboard navigation, readable contrast)</li>
+      <li>Organize projects with clean file structure (HTML pages, shared CSS/JS, assets)</li>
+    </ul>
+  </section>
+
+  <section class="container">
+    <h3>Features Demonstrated on This Site</h3>
+
+    <div class="cards">
+      <article class="card">
+        <h4>Responsive Layout</h4>
+        <p>
+          Sections and cards adapt across screen sizes so content stays readable
+          and organized.
+        </p>
+      </article>
+
+      <article class="card">
+        <h4>Accessibility Controls</h4>
+        <p>
+          Built-in controls for text size, plus a theme toggle for comfortable
+          reading.
+        </p>
+      </article>
+
+      <article class="card">
+        <h4>Interactive UI</h4>
+        <p>
+          A hero carousel with navigation controls and keyboard support to improve
+          browsing.
+        </p>
+      </article>
+
+      <article class="card">
+        <h4>Maintainable Structure</h4>
+        <p>
+          Shared styling and scripts across pages to keep the site consistent and
+          easy to expand.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="container">
+    <h3>Next Improvements (Planned)</h3>
+    <p class="section-note">
+      This section shows how I think about iteration and polish, not just a finished snapshot.
+    </p>
+    <ul>
+      <li>Add a small project gallery with screenshots and descriptions</li>
+      <li>Add a downloadable resume PDF</li>
+      <li>Add active tab highlighting in the navigation</li>
+      <li>Add a simple contact form (optional)</li>
+    </ul>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Adel Marcano</p>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
