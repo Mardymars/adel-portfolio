@@ -154,44 +154,72 @@
     <p class="modal-sub">What did you like, what did you view, and what can I improve?</p>
 
     <!-- Netlify Forms -->
-    <form name="website-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="website-feedback" />
-      <p class="hidden">
-        <label>Don’t fill this out: <input name="bot-field" /></label>
-      </p>
+<form
+  name="website-feedback"
+  method="POST"
+  action="/thanks.html"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+  <input type="hidden" name="form-name" value="website-feedback" />
 
-      <label class="field">
-        What did you like most?
-        <select name="liked_most" required>
-          <option value="" selected disabled>Select one</option>
-          <option>Design / Layout</option>
-          <option>Cybersecurity / IT content</option>
-          <option>Game Development content</option>
-          <option>Web Page Design content</option>
-          <option>Overall professionalism</option>
-        </select>
+  <p class="hidden">
+    <label>Don’t fill this out: <input name="bot-field" /></label>
+  </p>
+
+  <label class="field">
+    What did you like most?
+    <select name="liked_most" required>
+      <option value="" selected disabled>Select one</option>
+      <option>Design / Layout</option>
+      <option>Cybersecurity / IT content</option>
+      <option>Game Development content</option>
+      <option>Web Page Design content</option>
+      <option>Overall professionalism</option>
+    </select>
+  </label>
+
+  <fieldset class="field">
+    <legend>Which pages did you view?</legend>
+
+    <div class="check-grid">
+      <label class="check">
+        <input type="checkbox" name="viewed_pages" value="Home">
+        <span>Home</span>
       </label>
 
-      <!-- FIXED: checkbox layout -->
-      <fieldset class="field">
-        <legend>Which pages did you view?</legend>
-
-        <div class="check-grid">
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Home"> <span>Home</span></label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="About"> <span>About</span></label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Cybersecurity/IT"> <span>Cybersecurity/IT</span></label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Game Development"> <span>Game Development</span></label>
-          <label class="check"><input type="checkbox" name="viewed_pages" value="Web Page Design"> <span>Web Page Design</span></label>
-        </div>
-      </fieldset>
-
-      <label class="field">
-        Comment (optional)
-        <textarea name="comment" rows="4" placeholder="One suggestion that would make this site better..."></textarea>
+      <label class="check">
+        <input type="checkbox" name="viewed_pages" value="About">
+        <span>About</span>
       </label>
 
-      <button type="submit" class="card-btn">Send</button>
+      <label class="check">
+        <input type="checkbox" name="viewed_pages" value="Cybersecurity/IT">
+        <span>Cybersecurity/IT</span>
+      </label>
 
+      <label class="check">
+        <input type="checkbox" name="viewed_pages" value="Game Development">
+        <span>Game Development</span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="viewed_pages" value="Web Page Design">
+        <span>Web Page Design</span>
+      </label>
+    </div>
+  </fieldset>
+
+  <label class="field">
+    Comment (optional)
+    <textarea
+      name="comment"
+      rows="4"
+      placeholder="One suggestion that would make this site better..."
+    ></textarea>
+  </label>
+
+  <button type="submit" class="card-btn">Send</button>
       <p class="modal-foot">
         This form is handled by Netlify. Thanks for helping me improve.
       </p>
