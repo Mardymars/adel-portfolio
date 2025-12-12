@@ -1,5 +1,5 @@
 (() => {
-  // Smooth scroll for anchor links (tabs + Learn More)
+  // Smooth scroll for anchor links (only for # links)
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
       const id = link.getAttribute("href");
@@ -28,7 +28,6 @@
 
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
-      if (!slides.length) return;
       index = (index + 1) % slides.length;
       updateCarousel();
     });
@@ -36,13 +35,11 @@
 
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
-      if (!slides.length) return;
       index = (index - 1 + slides.length) % slides.length;
       updateCarousel();
     });
   }
 
-  // Keyboard nav
   document.addEventListener("keydown", (e) => {
     if (!slides.length) return;
     if (e.key === "ArrowRight") {
@@ -91,46 +88,42 @@
   if (textNormal) textNormal.addEventListener("click", () => setFontSize("20px"));
   if (textLarge) textLarge.addEventListener("click", () => setFontSize("24px"));
 
-  // Feedback popup (Netlify Form)
+  // Footer year
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+
+  // ===== Feedback Modal (manual open button + close) =====
   const modal = document.getElementById("feedbackModal");
+  const openBtn = document.getElementById("feedbackOpen");
   const closeBtn = document.getElementById("feedbackClose");
 
   function openModal() {
     if (!modal) return;
+    modal.classList.remove("hidden");
     modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
   }
 
   function closeModal() {
     if (!modal) return;
     modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
+    modal.classList.add("hidden");
   }
 
-  // Show after 20 seconds, only once per day
-  const shown = localStorage.getItem("feedbackShownAt");
-  const oneDay = 24 * 60 * 60 * 1000;
-
-  if (!shown || (Date.now() - Number(shown)) > oneDay) {
-    setTimeout(() => {
-      openModal();
-      localStorage.setItem("feedbackShownAt", String(Date.now()));
-    }, 20000);
-  }
-
+  if (openBtn) openBtn.addEventListener("click", openModal);
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
+  // close when clicking the dark backdrop
   if (modal) {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
   }
 
+  // ESC closes
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
   });
 
-  // Footer year
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  // Optional: auto popup after some time (turn on if you want)
+  // setTimeout(openModal, 15000); // 15 seconds
 })();
