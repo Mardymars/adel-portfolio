@@ -23,15 +23,24 @@
     track.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  document.getElementById("nextBtn").addEventListener("click", () => {
-    index = (index + 1) % slides.length;
-    updateCarousel();
-  });
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
 
-  document.getElementById("prevBtn").addEventListener("click", () => {
-    index = (index - 1 + slides.length) % slides.length;
-    updateCarousel();
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      if (!slides.length) return;
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (!slides.length) return;
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+  }
 
   // Keyboard nav
   document.addEventListener("keydown", (e) => {
@@ -60,25 +69,68 @@
   if (savedFont) document.documentElement.style.setProperty("--base-font", savedFont);
 
   function updateThemeIcon() {
+    if (!themeToggle) return;
     themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
   }
   updateThemeIcon();
 
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-    updateThemeIcon();
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+      updateThemeIcon();
+    });
+  }
 
   function setFontSize(value) {
     document.documentElement.style.setProperty("--base-font", value);
     localStorage.setItem("fontSize", value);
   }
 
-  textSmall.addEventListener("click", () => setFontSize("18px"));
-  textNormal.addEventListener("click", () => setFontSize("20px"));
-  textLarge.addEventListener("click", () => setFontSize("24px"));
+  if (textSmall) textSmall.addEventListener("click", () => setFontSize("18px"));
+  if (textNormal) textNormal.addEventListener("click", () => setFontSize("20px"));
+  if (textLarge) textLarge.addEventListener("click", () => setFontSize("24px"));
+
+  // Feedback popup (Netlify Form)
+  const modal = document.getElementById("feedbackModal");
+  const closeBtn = document.getElementById("feedbackClose");
+
+  function openModal() {
+    if (!modal) return;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  // Show after 20 seconds, only once per day
+  const shown = localStorage.getItem("feedbackShownAt");
+  const oneDay = 24 * 60 * 60 * 1000;
+
+  if (!shown || (Date.now() - Number(shown)) > oneDay) {
+    setTimeout(() => {
+      openModal();
+      localStorage.setItem("feedbackShownAt", String(Date.now()));
+    }, 20000);
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
 
   // Footer year
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
