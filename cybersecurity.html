@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cybersecurity / IT – Adel Marcano</title>
 
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy"
+        content="
+          default-src 'self';
+          img-src 'self' data:;
+          style-src 'self' 'unsafe-inline';
+          script-src 'self';
+        ">
+
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
@@ -19,12 +28,12 @@
         <p class="tagline">IT • Cybersecurity • Game Development • Web Design</p>
       </div>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary navigation">
         <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="cybersecurity.html">Cybersecurity/IT</a>
+        <a class="nav-link" href="about.html">About Me</a>
+        <a class="nav-link active" href="cybersecurity.html">Cybersecurity/IT</a>
         <a class="nav-link" href="gamedev.html">Game Development</a>
         <a class="nav-link" href="web.html">Web Page Design</a>
-        <a class="nav-link" href="media.html">Media</a>
         <a class="nav-link" href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -44,27 +53,63 @@
     <h2>Cybersecurity / IT</h2>
 
     <p>
-      This page focuses on my foundational knowledge in cybersecurity and
-      information technology. My experience emphasizes safe, legal practice,
-      structured learning, and clear documentation.
+      This page highlights my practical, entry-level experience in cybersecurity
+      and information technology, with a focus on secure configuration, safe
+      deployment practices, and reducing attack surface through thoughtful design.
+    </p>
+
+    <p>
+      I approach security from a fundamentals-first perspective, emphasizing
+      legality, documentation, and real-world best practices rather than
+      exploit-focused experimentation.
     </p>
   </section>
 
   <section class="container">
-    <h3>Skills & Knowledge</h3>
+    <h3>Skills & Applied Knowledge</h3>
     <ul>
-      <li>Basic security principles and threat awareness</li>
-      <li>Hands-on labs in controlled environments</li>
-      <li>IT troubleshooting and documentation</li>
-      <li>Networking fundamentals</li>
+      <li>Core security principles such as least privilege and defense in depth</li>
+      <li>Threat awareness including XSS, clickjacking, and misconfiguration risks</li>
+      <li>Secure static site deployment using GitHub Pages and Netlify</li>
+      <li>Implementation and validation of HTTP security headers</li>
+      <li>IT troubleshooting and clear technical documentation</li>
+      <li>Networking fundamentals and client–server request flow</li>
     </ul>
   </section>
 
   <section class="container">
-    <h3>Projects & Labs</h3>
+    <h3>Security Practices Demonstrated on This Site</h3>
+    <ul>
+      <li>HTTPS enforcement with Strict-Transport-Security enabled</li>
+      <li>Content Security Policy (CSP) to limit script injection vectors</li>
+      <li>Clickjacking protection using frame-ancestor restrictions</li>
+      <li>Browser permission hardening (camera, microphone, geolocation disabled)</li>
+      <li>Cross-origin isolation headers to reduce data exposure</li>
+      <li>Static-site architecture to minimize attack surface</li>
+    </ul>
+  </section>
+
+  <section class="container">
+    <h3>Security & Privacy Notice</h3>
+
     <p>
-      This section will include screenshots, summaries, and write-ups of labs
-      and exercises demonstrating my learning progress.
+      This website is delivered exclusively over <strong>HTTPS</strong>,
+      ensuring encrypted communication between visitors and the server.
+    </p>
+
+    <p>
+      No personal data is collected, stored, or processed. There are no cookies,
+      trackers, analytics scripts, or backend services running on this site.
+    </p>
+
+    <p>
+      A <code>security.txt</code> file is provided to support responsible
+      disclosure and demonstrate awareness of modern web security standards.
+    </p>
+
+    <p>
+      The site is intentionally designed as a static portfolio to reduce
+      complexity and eliminate unnecessary security risk.
     </p>
   </section>
 
