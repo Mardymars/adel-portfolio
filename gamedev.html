@@ -21,10 +21,10 @@
 
       <nav class="nav" aria-label="Primary navigation">
         <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About Me</a>
         <a class="nav-link" href="cybersecurity.html">Cybersecurity/IT</a>
-        <a class="nav-link" href="gamedev.html">Game Development</a>
+        <a class="nav-link active" href="gamedev.html">Game Development</a>
         <a class="nav-link" href="web.html">Web Page Design</a>
-        <a class="nav-link" href="media.html">Media</a>
         <a class="nav-link" href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -43,121 +43,137 @@
   <section class="container">
     <h2>Game Development</h2>
     <p>
-      This page highlights my game development work, primarily using Unity.
-      I focus on building systems, gameplay mechanics, and clean iterative progress.
-      You’ll find project summaries, progress notes, and media as development continues.
+      This page showcases my Unity development work with a focus on gameplay systems,
+      combat logic, status effects, debugging, and iterative improvements.
+      Below is a recent gameplay/dev video and a structured summary of progress.
     </p>
   </section>
 
   <section class="container">
-    <h3>Core Skills</h3>
+    <h3>Featured Video</h3>
+    <p class="section-note">
+      Latest systems progress and battle updates (YouTube embed).
+    </p>
+
+    <div class="video-card">
+      <div class="video-frame" aria-label="Embedded YouTube video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/dMuqgEM1tKw"
+          title="Gameplay / Systems Demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="video-meta">
+        <a class="card-btn" href="https://youtu.be/dMuqgEM1tKw" target="_blank" rel="noreferrer">
+          Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h3>Core Skills (Unity)</h3>
     <ul>
-      <li>Unity (C#) gameplay systems and iteration</li>
-      <li>UI/UX for games, menus, and feedback</li>
-      <li>Animation/VFX integration and polish</li>
-      <li>State machines, combat loops, and interactions</li>
-      <li>Version control habits and structured debugging</li>
+      <li>Combat systems, turn order logic, and battle state management</li>
+      <li>Status effects (application rules, messaging, UI feedback)</li>
+      <li>System debugging and iteration with clean patch-style updates</li>
+      <li>Dialogue branching and conditional triggers based on battle state</li>
+      <li>Player/enemy thresholds and behavior changes based on health</li>
     </ul>
   </section>
 
   <section class="container">
-    <h3>Featured Projects</h3>
+    <h3>Recent Updates</h3>
+    <p class="section-note">
+      Patch-style summary of completed work and improvements.
+    </p>
 
     <div class="cards">
       <article class="card">
-        <h4>Project Title (Main Game)</h4>
-        <p>
-          Short description of the game, genre, and the “hook”.
-          Mention what you’re building and what makes it interesting.
-        </p>
+        <h4>Combat Flow & Battle Control</h4>
         <ul>
-          <li>Status: In development</li>
-          <li>Engine: Unity</li>
-          <li>Role: Programmer / Designer</li>
+          <li>Reviving is now possible</li>
+          <li>Restarting battles is now possible</li>
+          <li>Rest points before the boss added</li>
+          <li>Boss turn order fixed (no longer takes extra turns)</li>
         </ul>
-        <p>
-          <strong>What I’m proud of:</strong> (Example: combat system, UI polish, saving/loading)
-        </p>
       </article>
 
       <article class="card">
-        <h4>Prototype / Systems Demo</h4>
-        <p>
-          A smaller project focusing on one mechanic (movement, combat, AI, inventory, etc.).
-          This is perfect for showing technical skill.
-        </p>
+        <h4>Status Effects & Rules</h4>
         <ul>
-          <li>Status: Prototype</li>
-          <li>Engine: Unity</li>
-          <li>Focus: (Example: AI behaviors, UI, animation)</li>
+          <li>Percent chance moves added (example: Hush = 20%)</li>
+          <li>Status effects apply immediately (no 1-second delay, except stun)</li>
+          <li>Silence implemented (blocks special skills, not healing)</li>
+          <li>Status messaging fixed (burn/bleed text corrected)</li>
         </ul>
-        <p>
-          <strong>Key takeaway:</strong> (Example: built a reusable system I can plug into projects)
-        </p>
       </article>
 
       <article class="card">
-        <h4>Tooling / Editor Utility</h4>
-        <p>
-          If you have any dev tools, helper scripts, or workflow improvements,
-          put them here. Recruiters love tools that save time.
-        </p>
+        <h4>UI, Feedback, and Polish</h4>
         <ul>
-          <li>Status: Ongoing</li>
-          <li>Focus: Productivity / workflow</li>
+          <li>Silence/HP/MP/Shields no longer skip turns; show requirements instead</li>
+          <li>Reap cannot be canceled during healing phase</li>
+          <li>Fixed highlighted character issue when canceling healing</li>
+          <li>Fixed animation “skidding” (Cale + Mr. Depel)</li>
         </ul>
-        <p>
-          <strong>Impact:</strong> (Example: speeds up content creation, reduces bugs)
-        </p>
+      </article>
+    </div>
+
+    <div class="cards" style="margin-top:16px;">
+      <article class="card">
+        <h4>Dialogue & Dynamic Events</h4>
+        <ul>
+          <li>Battle dialogue and branching side dialogue added</li>
+          <li>Dialogue triggers based on player usage and move usage</li>
+          <li>Mid-battle events can add players based on health thresholds (players + enemies)</li>
+          <li>Reduced “mumbled/jumbled” words caused by repeated status application</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h4>Bug Fixes</h4>
+        <ul>
+          <li>Fixed a bug that applied damage twice (also affected Reap healing)</li>
+          <li>Fixed boss turn order logic for consistent pacing</li>
+          <li>Multiple dialogue issues cleaned up (especially item usage cases)</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h4>System Notes</h4>
+        <ul>
+          <li>Focus on consistency: rules clarity, UI messaging, and player feedback</li>
+          <li>Iteration driven by testing edge cases (status stacking, turn flow)</li>
+        </ul>
       </article>
     </div>
   </section>
 
   <section class="container">
-    <h3>Dev Log / Progress</h3>
-    <p>Quick updates that show consistent progress and problem-solving.</p>
-
-    <div class="cards">
-      <article class="card">
-        <h4>Dev Log Entry #1</h4>
-        <p><strong>Date:</strong> (add date)</p>
-        <p>
-          What you worked on, what problem you solved, and what’s next.
-          Keep it short and readable.
-        </p>
-        <ul>
-          <li>Done: (example: implemented menu navigation)</li>
-          <li>Learned: (example: improved animation blending)</li>
-          <li>Next: (example: add saving/loading)</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h4>Dev Log Entry #2</h4>
-        <p><strong>Date:</strong> (add date)</p>
-        <p>
-          Another short update. This builds credibility fast.
-        </p>
-        <ul>
-          <li>Done:</li>
-          <li>Learned:</li>
-          <li>Next:</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="container">
-    <h3>Media</h3>
-    <p>
-      Add screenshots, short clips, or a trailer here.
-      You can also link to a YouTube video or an itch.io/Steam page later.
+    <h3>Known Issues / Next Fixes</h3>
+    <p class="section-note">
+      Tracking remaining bugs clearly is part of how I work and iterate.
     </p>
-    <ul>
-      <li>Gameplay clip: (link later)</li>
-      <li>Screenshot gallery: (add later)</li>
-      <li>Build download: (add later)</li>
-    </ul>
+
+    <div class="card" style="padding:22px;">
+      <ul>
+        <li>
+          When silenced, <strong>Reap</strong> skips the damage phase and plays the healing phase.
+          This can lead to funny edge cases (including healing at 0 HP).
+        </li>
+        <li>
+          If damage is recorded before silence and then silence is applied, the update doesn’t occur,
+          and Nekro can still heal even if the damage phase is skipped.
+        </li>
+        <li>
+          Stun should finish when a player or enemy is attacked (needs rule adjustment).
+        </li>
+      </ul>
+    </div>
   </section>
 
   <footer class="site-footer">
