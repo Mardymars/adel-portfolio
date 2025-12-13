@@ -19,9 +19,9 @@
         <p class="tagline">IT • Cybersecurity • Game Development • Web Design</p>
       </div>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary navigation">
         <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About Me</a>
+        <a class="nav-link active" href="about.html">About Me</a>
         <a class="nav-link" href="cybersecurity.html">Cybersecurity/IT</a>
         <a class="nav-link" href="gamedev.html">Game Development</a>
         <a class="nav-link" href="web.html">Web Page Design</a>
@@ -29,60 +29,69 @@
       </nav>
     </div>
 
-    <div class="controls">
-      <button id="themeToggle" class="btn">🌙</button>
-      <button id="textSmall" class="btn">A-</button>
-      <button id="textNormal" class="btn">A</button>
-      <button id="textLarge" class="btn">A+</button>
+    <div class="controls" aria-label="Display settings">
+      <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">🌙</button>
+      <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
+      <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
+      <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
     </div>
   </div>
 </header>
 
 <main class="content">
 
+  <!-- ABOUT -->
   <section class="container">
     <h2>About Me</h2>
 
     <p>
-      I’m Adel Marcano, an aspiring IT and cybersecurity professional with strong
-      interests in web design and game development. I enjoy building systems that
-      are structured, readable, and practical, whether that means troubleshooting
-      technical issues, designing accessible interfaces, or developing interactive
-      projects.
+      I’m Adel Marcano, a cybersecurity senior at Old Dominion University with hands-on experience in IT support,
+      system configuration, and foundational security practices across Windows and Linux environments. I focus on
+      building systems that are secure, readable, and practical—whether that means troubleshooting technical issues,
+      validating security controls, or deploying clean, accessible interfaces.
     </p>
 
     <p>
-      I’m especially interested in roles where I can continue learning, apply
-      foundational security and IT principles, and contribute to real-world
-      technical solutions. I value clear documentation, thoughtful design, and
-      steady improvement over time.
+      My interests sit at the intersection of IT operations and cybersecurity. I enjoy identifying misconfigurations,
+      applying remediation grounded in best practices, and verifying results through repeatable workflows. I value
+      clear documentation, thoughtful design decisions, and steady improvement over time.
+    </p>
+
+    <p class="section-note">
+      I’m especially interested in entry-level IT, cybersecurity, or consulting roles where I can continue learning
+      while contributing to real-world technical solutions.
     </p>
   </section>
 
+  <!-- RESUME -->
   <section class="container">
-    <h3>Resume</h3>
+    <h3>Résumé</h3>
 
     <p>
-      You can view or download my resume below.
+      A copy of my résumé is available below.
     </p>
 
-    <ul>
-      <li>
-        <a href="resume.pdf" target="_blank">
-          Download Resume (PDF)
-        </a>
-        <span class="section-note">– add your resume file here</span>
-      </li>
-    </ul>
+    <a
+      href="assets/resume_adel_marcano.pdf"
+      class="card-btn"
+      target="_blank"
+      rel="noreferrer"
+      download
+    >
+      Download Résumé (PDF)
+    </a>
   </section>
 
+  <!-- TECHNICAL INTERESTS -->
   <section class="container">
     <h3>Technical Interests</h3>
     <ul>
-      <li>IT support and troubleshooting</li>
-      <li>Cybersecurity fundamentals and safe lab practice</li>
-      <li>Web design with accessibility in mind</li>
-      <li>Game systems and interactive development</li>
+      <li>IT support, troubleshooting, and user-focused problem resolution</li>
+      <li>Cybersecurity fundamentals, secure configuration, and safe lab practice</li>
+      <li>Vulnerability assessment and system hardening</li>
+      <li>Secure web deployment and configuration validation</li>
+      <li>Web design with accessibility and maintainability in mind</li>
+      <li>Game systems, logic-driven mechanics, and interactive development</li>
     </ul>
   </section>
 
