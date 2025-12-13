@@ -7,6 +7,37 @@
 
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
+
+  <style>
+    /* Video card styling that won’t mess with your global CSS */
+    .video-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card, #fff);
+      overflow: hidden;
+    }
+
+    .video-frame {
+      border-bottom: 1px solid var(--border);
+      background: #000;
+    }
+
+    .video-frame video {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+
+    .video-meta {
+      padding: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  </style>
 </head>
 
 <body>
@@ -43,33 +74,33 @@
   <section class="container">
     <h2>Game Development</h2>
     <p>
-      This page showcases my Unity development work with a focus on gameplay systems,
-      combat logic, status effects, debugging, and iterative improvements.
-      Below is a recent gameplay/dev video and a structured summary of progress.
+      This page highlights my Unity development work with a focus on gameplay systems, combat logic,
+      status effects, debugging, and iterative improvements. Below is a recent development clip and a
+      structured summary of progress.
     </p>
   </section>
 
   <section class="container">
     <h3>Featured Video</h3>
     <p class="section-note">
-      Latest systems progress and battle updates (YouTube embed).
+      Branching dialogue work-in-progress clip hosted directly on this site.
     </p>
 
     <div class="video-card">
-      <div class="video-frame" aria-label="Embedded YouTube video">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/dMuqgEM1tKw"
-          title="Gameplay / Systems Demo"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+      <div class="video-frame" aria-label="Gameplay video">
+        <video controls preload="metadata">
+          <source src="assets/Branching-Dialog-WIP.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div class="video-meta">
-        <a class="card-btn" href="https://youtu.be/dMuqgEM1tKw" target="_blank" rel="noreferrer">
-          Watch on YouTube
+        <a class="card-btn" href="assets/Branching-Dialog-WIP.mp4" target="_blank" rel="noreferrer">
+          Open video in a new tab
         </a>
+        <span class="section-note">
+          Tip: If playback stutters, export the clip at 720p or lower for smoother loading.
+        </span>
       </div>
     </div>
   </section>
@@ -163,7 +194,7 @@
       <ul>
         <li>
           When silenced, <strong>Reap</strong> skips the damage phase and plays the healing phase.
-          This can lead to funny edge cases (including healing at 0 HP).
+          This can lead to edge cases (including healing at 0 HP).
         </li>
         <li>
           If damage is recorded before silence and then silence is applied, the update doesn’t occur,
