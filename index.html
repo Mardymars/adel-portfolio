@@ -30,7 +30,6 @@
     </div>
 
     <div class="controls">
-      <!-- NEW: Feedback button -->
       <button id="feedbackOpen" class="btn" type="button">Feedback</button>
 
       <button id="themeToggle" class="btn" type="button">🌙</button>
@@ -42,7 +41,7 @@
 </header>
 
 <section class="hero-carousel">
-  <button class="hero-arrow left" id="prevBtn">←</button>
+  <button class="hero-arrow left" id="prevBtn" type="button">←</button>
 
   <div class="hero-viewport">
     <div class="hero-track" id="carouselTrack">
@@ -77,7 +76,7 @@
     </div>
   </div>
 
-  <button class="hero-arrow right" id="nextBtn">→</button>
+  <button class="hero-arrow right" id="nextBtn" type="button">→</button>
 </section>
 
 <main class="content">
@@ -86,18 +85,19 @@
     <h2>About Me</h2>
 
     <p>
-      My name is Adel Marcano, and this website is a central place to explore both
-      my professional skills and personal projects. My work spans information
-      technology, cybersecurity fundamentals, web design, and game development,
-      with a strong focus on clean structure, usability, and practical
-      problem-solving.
+      My name is Adel Marcano, and this website serves as a central hub for my
+      professional skills and <span class="kw">hands-on projects</span>. My work spans
+      <span class="kw">IT</span>, <span class="kw">cybersecurity fundamentals</span>,
+      <span class="kw">web design</span>, and <span class="kw">game development</span>,
+      with a strong emphasis on <span class="kw">structured thinking</span>,
+      <span class="kw">secure practices</span>, and <span class="kw">problem-solving</span>.
     </p>
 
     <p>
-      Here you’ll find examples of my work, the tools and technologies I use, and
-      projects that reflect how I approach technical challenges as well as
-      creative systems. For a more detailed background and my resume, please see
-      the <strong>About Me</strong> page.
+      Here you’ll find documented labs, tools, and projects that demonstrate how I
+      approach technical challenges, from system troubleshooting and vulnerability
+      awareness to building clean, accessible user interfaces. For a more detailed
+      background and my resume, please see the <strong>About Me</strong> page.
     </p>
   </section>
 
@@ -153,73 +153,75 @@
     <h2 id="feedbackTitle">Quick Feedback</h2>
     <p class="modal-sub">What did you like, what did you view, and what can I improve?</p>
 
-    <!-- Netlify Forms -->
-<form
-  name="website-feedback"
-  method="POST"
-  action="/"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
->
-<input type="hidden" name="redirect" value="/" />
+    <form
+      name="website-feedback"
+      method="POST"
+      action="/thanks.html"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="website-feedback" />
+      <input type="hidden" name="redirect" value="thanks.html" />
 
-  <p class="hidden">
-    <label>Don’t fill this out: <input name="bot-field" /></label>
-  </p>
 
-  <label class="field">
-    What did you like most?
-    <select name="liked_most" required>
-      <option value="" selected disabled>Select one</option>
-      <option>Design / Layout</option>
-      <option>Cybersecurity / IT content</option>
-      <option>Game Development content</option>
-      <option>Web Page Design content</option>
-      <option>Overall professionalism</option>
-    </select>
-  </label>
+      <p class="hidden">
+        <label>Don’t fill this out: <input name="bot-field" /></label>
+      </p>
 
-  <fieldset class="field">
-    <legend>Which pages did you view?</legend>
-
-    <div class="check-grid">
-      <label class="check">
-        <input type="checkbox" name="viewed_pages" value="Home">
-        <span>Home</span>
+      <label class="field">
+        What did you like most?
+        <select name="liked_most" required>
+          <option value="" selected disabled>Select one</option>
+          <option>Design / Layout</option>
+          <option>Cybersecurity / IT content</option>
+          <option>Game Development content</option>
+          <option>Web Page Design content</option>
+          <option>Overall professionalism</option>
+        </select>
       </label>
 
-      <label class="check">
-        <input type="checkbox" name="viewed_pages" value="About">
-        <span>About</span>
+      <fieldset class="field">
+        <legend>Which pages did you view?</legend>
+
+        <div class="check-grid">
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Home">
+            <span>Home</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="About">
+            <span>About</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Cybersecurity/IT">
+            <span>Cybersecurity/IT</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Game Development">
+            <span>Game Development</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Web Page Design">
+            <span>Web Page Design</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <label class="field">
+        Comment (optional)
+        <textarea
+          name="comment"
+          rows="4"
+          placeholder="One suggestion that would make this site better..."
+        ></textarea>
       </label>
 
-      <label class="check">
-        <input type="checkbox" name="viewed_pages" value="Cybersecurity/IT">
-        <span>Cybersecurity/IT</span>
-      </label>
+      <button type="submit" class="card-btn">Send</button>
 
-      <label class="check">
-        <input type="checkbox" name="viewed_pages" value="Game Development">
-        <span>Game Development</span>
-      </label>
-
-      <label class="check">
-        <input type="checkbox" name="viewed_pages" value="Web Page Design">
-        <span>Web Page Design</span>
-      </label>
-    </div>
-  </fieldset>
-
-  <label class="field">
-    Comment (optional)
-    <textarea
-      name="comment"
-      rows="4"
-      placeholder="One suggestion that would make this site better..."
-    ></textarea>
-  </label>
-
-  <button type="submit" class="card-btn">Send</button>
       <p class="modal-foot">
         This form is handled by Netlify. Thanks for helping me improve.
       </p>
@@ -229,5 +231,3 @@
 
 </body>
 </html>
-
-
