@@ -5,17 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cybersecurity / IT – Adel Marcano</title>
 
-  <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy"
-        content="
-          default-src 'self';
-          img-src 'self' data:;
-          style-src 'self' 'unsafe-inline';
-          script-src 'self';
-        ">
-
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
+
+  <!-- Nessus gallery styling -->
+  <style>
+    .nessus-gallery {
+      position: relative;
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0b0f14;
+    }
+
+    .nessus-gallery .ness-slide {
+      display: none;
+      margin: 0;
+    }
+
+    .nessus-gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nessus-gallery .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .nessus-gallery .nav-btn:hover {
+      background: rgba(0,0,0,0.75);
+    }
+
+    .nessus-gallery .prev { left: 12px; }
+    .nessus-gallery .next { right: 12px; }
+
+    .nessus-gallery .label {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+  </style>
 </head>
 
 <body>
@@ -38,11 +87,11 @@
       </nav>
     </div>
 
-    <div class="controls">
-      <button id="themeToggle" class="btn">🌙</button>
-      <button id="textSmall" class="btn">A-</button>
-      <button id="textNormal" class="btn">A</button>
-      <button id="textLarge" class="btn">A+</button>
+    <div class="controls" aria-label="Display settings">
+      <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">🌙</button>
+      <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
+      <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
+      <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
     </div>
   </div>
 </header>
@@ -51,66 +100,156 @@
 
   <section class="container">
     <h2>Cybersecurity / IT</h2>
-
     <p>
-      This page highlights my practical, entry-level experience in cybersecurity
-      and information technology, with a focus on secure configuration, safe
-      deployment practices, and reducing attack surface through thoughtful design.
+      I prioritize fundamentals-first security, focusing on secure configuration, safe deployment practices,
+      and measurable attack surface reduction through practical, documented work.
     </p>
-
-    <p>
-      I approach security from a fundamentals-first perspective, emphasizing
-      legality, documentation, and real-world best practices rather than
-      exploit-focused experimentation.
+    <p class="section-note">
+      The artifacts below demonstrate implementation and validation of real security controls on a live deployment.
     </p>
   </section>
 
   <section class="container">
-    <h3>Skills & Applied Knowledge</h3>
+    <h3>What I Apply</h3>
     <ul>
-      <li>Core security principles such as least privilege and defense in depth</li>
-      <li>Threat awareness including XSS, clickjacking, and misconfiguration risks</li>
-      <li>Secure static site deployment using GitHub Pages and Netlify</li>
-      <li>Implementation and validation of HTTP security headers</li>
-      <li>IT troubleshooting and clear technical documentation</li>
-      <li>Networking fundamentals and client–server request flow</li>
+      <li>Least-privilege access and defense-in-depth principles</li>
+      <li>Threat awareness, including XSS, clickjacking, and configuration-driven risks</li>
+      <li>Secure static-site deployment using GitHub + Netlify</li>
+      <li>Security headers: implement, verify, and maintain</li>
+      <li>Clear troubleshooting, documentation, and change tracking</li>
     </ul>
   </section>
 
   <section class="container">
-    <h3>Security Practices Demonstrated on This Site</h3>
-    <ul>
-      <li>HTTPS enforcement with Strict-Transport-Security enabled</li>
-      <li>Content Security Policy (CSP) to limit script injection vectors</li>
-      <li>Clickjacking protection using frame-ancestor restrictions</li>
-      <li>Browser permission hardening (camera, microphone, geolocation disabled)</li>
-      <li>Cross-origin isolation headers to reduce data exposure</li>
-      <li>Static-site architecture to minimize attack surface</li>
-    </ul>
+    <h3>Artifacts</h3>
+    <p class="section-note">
+      These artifacts show both configuration and verification, ensuring controls are not only defined but actively enforced.
+    </p>
+
+    <!-- Artifact 1 -->
+    <article class="card" style="padding:22px;">
+      <h4 style="margin-top:0;">Artifact 1: Security Header Configuration (_headers)</h4>
+      <p>
+        I implemented baseline hardening headers and a Content Security Policy (CSP) to reduce common web risks such as
+        clickjacking, MIME sniffing, excessive browser permissions, and script injection exposure.
+      </p>
+
+      <figure style="margin:16px 0 0;">
+        <img
+          src="images/cyber_artifact1_headers.png"
+          alt="GitHub screenshot showing the Netlify _headers file with security headers and CSP configuration"
+          style="width:100%; height:auto; border-radius:16px; border:1px solid var(--border);"
+          loading="lazy"
+        />
+        <figcaption class="section-note" style="margin-top:10px;">
+          Configuration proof: headers + CSP defined in Netlify _headers.
+        </figcaption>
+      </figure>
+
+      <ul style="margin-top:14px;">
+        <li>Clickjacking mitigation (frame restrictions)</li>
+        <li>MIME-type sniffing protection</li>
+        <li>Permissions-Policy hardening</li>
+        <li>COOP/CORP controls to reduce cross-origin exposure</li>
+        <li>CSP tuned for a static portfolio architecture</li>
+      </ul>
+    </article>
+
+    <div style="height:18px;"></div>
+
+    <!-- Artifact 2 -->
+    <article class="card" style="padding:22px;">
+      <h4 style="margin-top:0;">Artifact 2: Verification (Browser Response Headers)</h4>
+      <p>
+        After deployment, I validated the live HTTPS response in DevTools to confirm the intended headers were
+        actually being served in production (not just present in source).
+      </p>
+
+      <figure style="margin:16px 0 0;">
+        <img
+          src="images/cyber_artifact2_response_headers.png"
+          alt="Browser DevTools screenshot showing Response Headers including CSP, HSTS, X-Frame-Options, and related security headers"
+          style="width:100%; height:auto; border-radius:16px; border:1px solid var(--border);"
+          loading="lazy"
+        />
+        <figcaption class="section-note" style="margin-top:10px;">
+          Validation proof: headers observed in the live production response.
+        </figcaption>
+      </figure>
+
+      <ul style="margin-top:14px;">
+        <li>Confirms HTTPS enforcement and HSTS in production</li>
+        <li>Confirms CSP is delivered by the platform</li>
+        <li>Confirms frame protections and permissions hardening</li>
+        <li>Demonstrates a repeatable verification workflow</li>
+      </ul>
+    </article>
+
+    <div style="height:18px;"></div>
+
+    <!-- Artifact 3 -->
+    <article class="card" style="padding:22px;">
+      <h4 style="margin-top:0;">Artifact 3: Nessus Essentials Vulnerability Scan (Windows 11)</h4>
+      <p>
+        I executed a baseline vulnerability scan of a Windows 11 host using Nessus Essentials, reviewed identified findings,
+        and documented remediation steps and validation outcomes.
+      </p>
+
+      <div class="nessus-gallery" aria-label="Nessus screenshot gallery">
+        <figure id="ness1" class="ness-slide">
+          <img
+            src="images/ness1.png"
+            alt="Nessus scan overview showing vulnerability list and severity breakdown"
+            loading="lazy"
+          />
+          <span class="label">1 / 3 • Scan Overview</span>
+          <a class="nav-btn prev" href="#ness3" aria-label="Previous image">‹</a>
+          <a class="nav-btn next" href="#ness2" aria-label="Next image">›</a>
+        </figure>
+
+        <figure id="ness2" class="ness-slide">
+          <img
+            src="images/ness2.png"
+            alt="Registry Editor showing remediation related to SMB signing hardening"
+            loading="lazy"
+          />
+          <span class="label">2 / 3 • Remediation Evidence</span>
+          <a class="nav-btn prev" href="#ness1" aria-label="Previous image">‹</a>
+          <a class="nav-btn next" href="#ness3" aria-label="Next image">›</a>
+        </figure>
+
+        <figure id="ness3" class="ness-slide">
+          <img
+            src="images/ness3.png"
+            alt="Nessus scan history showing completed scans and timestamps"
+            loading="lazy"
+          />
+          <span class="label">3 / 3 • Scan History</span>
+          <a class="nav-btn prev" href="#ness2" aria-label="Previous image">‹</a>
+          <a class="nav-btn next" href="#ness1" aria-label="Next image">›</a>
+        </figure>
+      </div>
+
+      <p class="section-note" style="margin-top:10px;">
+        Use the arrows to cycle through scan evidence.
+      </p>
+
+      <ul style="margin-top:14px;">
+        <li>Baseline scan of a Windows 11 host using Nessus Essentials</li>
+        <li>Reviewed findings and referenced remediation guidance</li>
+        <li>Captured remediation evidence and scan history for repeatability</li>
+      </ul>
+    </article>
   </section>
 
   <section class="container">
-    <h3>Security & Privacy Notice</h3>
-
-    <p>
-      This website is delivered exclusively over <strong>HTTPS</strong>,
-      ensuring encrypted communication between visitors and the server.
-    </p>
-
-    <p>
-      No personal data is collected, stored, or processed. There are no cookies,
-      trackers, analytics scripts, or backend services running on this site.
-    </p>
-
-    <p>
-      A <code>security.txt</code> file is provided to support responsible
-      disclosure and demonstrate awareness of modern web security standards.
-    </p>
-
-    <p>
-      The site is intentionally designed as a static portfolio to reduce
-      complexity and eliminate unnecessary security risk.
-    </p>
+    <h3>Security & Privacy</h3>
+    <ul>
+      <li>Delivered over HTTPS (encrypted in transit)</li>
+      <li>No cookies, trackers, analytics, or backend services</li>
+      <li>Static architecture to minimize attack surface</li>
+      <li>Responsible disclosure support via security.txt</li>
+    </ul>
   </section>
 
   <footer class="site-footer">
