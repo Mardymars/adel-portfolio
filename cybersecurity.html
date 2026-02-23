@@ -64,6 +64,20 @@
       font-size: 12px;
       letter-spacing: 0.2px;
     }
+
+    /* lightweight code block styling (no new classes needed) */
+    pre {
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.35);
+      overflow: auto;
+      line-height: 1.35;
+      font-size: 13px;
+    }
+
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
 
@@ -105,7 +119,10 @@
       and measurable attack surface reduction through practical, documented work.
     </p>
     <p class="section-note">
-      The artifacts below demonstrate implementation and validation of real security controls on a live deployment.
+      The artifacts below demonstrate implementation and validation of real security controls and real deployment workflows.
+    </p>
+    <p class="section-note">
+      Note: some application and platform work is documented as text-only to avoid exposing user data or internal app details.
     </p>
   </section>
 
@@ -116,6 +133,7 @@
       <li>Threat awareness, including XSS, clickjacking, and configuration-driven risks</li>
       <li>Secure static-site deployment using GitHub + Netlify</li>
       <li>Security headers: implement, verify, and maintain</li>
+      <li>Identity and access control through authentication + server-side policy enforcement</li>
       <li>Clear troubleshooting, documentation, and change tracking</li>
     </ul>
   </section>
@@ -240,15 +258,110 @@
         <li>Captured remediation evidence and scan history for repeatability</li>
       </ul>
     </article>
+
+    <div style="height:18px;"></div>
+
+    <!-- Artifact 4 (text-only: FieldFlow + Firebase) -->
+    <article class="card" style="padding:22px;">
+      <h4 style="margin-top:0;">Artifact 4: FieldFlow (Early Access) — Secure Cross-Device Data (Text-Only)</h4>
+      <p>
+        FieldFlow is an Android application distributed through Google Play Closed Testing (Early Access).
+        It helps users keep important information safe and available across devices (so data isn’t lost when switching phones),
+        with organization features like notes, territories, and reminders for ministry workflow.
+      </p>
+
+      <ul style="margin-top:14px;">
+        <li>Built a cloud-backed data model focused on reliability and secure access across devices</li>
+        <li>Used Firebase Authentication to protect accounts and require sign-in before accessing private data</li>
+        <li>Stored user content in Firestore with server-side rules designed around least privilege (scoped access, not broad access)</li>
+        <li>Tested security behavior by comparing allowed actions vs restricted actions (permission-denied outcomes for blocked operations)</li>
+      </ul>
+
+      <p class="section-note" style="margin-top:12px;">
+        Documented as text-only to avoid exposing user data or internal app screens while still describing the security control and validation approach.
+      </p>
+    </article>
+
+    <div style="height:18px;"></div>
+
+    <!-- Artifact 5 (text-only: Firebase accounts + rules) -->
+    <article class="card" style="padding:22px;">
+      <h4 style="margin-top:0;">Artifact 5: Firebase Account Security + Firestore Rules (Text-Only)</h4>
+      <p>
+        For FieldFlow, I treated authentication and authorization as separate layers: users must be authenticated, and access is
+        still restricted by server-side database rules. This reduces the risk of a client-side bypass and keeps enforcement at the policy layer.
+      </p>
+
+      <ul style="margin-top:14px;">
+        <li>Account protection through Firebase Authentication (sign-in required for private content)</li>
+        <li>Data isolation: rules scope reads/writes so users can only access the data they are allowed to access</li>
+        <li>Write protection: prevents unauthorized edits and unsafe updates by enforcing rule constraints</li>
+        <li>Validation workflow: attempt restricted actions → confirm permission-denied → confirm intended actions succeed</li>
+      </ul>
+
+      <p class="section-note" style="margin-top:12px;">
+        Simplified, non-sensitive rules excerpt (structure only):
+      </p>
+
+      <pre><code>// Firestore Rules (simplified structure example)
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+
+    // Example: each user can only access their own profile doc
+    match /users/{uid} {
+      allow read, write: if signedIn() &amp;&amp; request.auth.uid == uid;
+    }
+
+    // Example: user-scoped notes (ownership checks are stricter in live rules)
+    match /notes/{noteId} {
+      allow read, write: if signedIn();
+    }
+  }
+}</code></pre>
+
+      <p class="section-note" style="margin-top:12px;">
+        Live rules are more restrictive than this excerpt (ownership/membership checks + write constraints), but this shows the security approach.
+      </p>
+    </article>
+
+    <div style="height:18px;"></div>
+
+    <!-- Artifact 6 (text-only: Play Console privacy/security requirements) -->
+    <article class="card" style="padding:22px;">
+      <h4 style="margin-top:0;">Artifact 6: Google Play Requirements (Privacy + Security + Early Access Workflow)</h4>
+      <p>
+        To distribute FieldFlow in Google Play Closed Testing, I worked through required Play Console steps that focus on privacy, security transparency,
+        and controlled distribution during early access.
+      </p>
+
+      <ul style="margin-top:14px;">
+        <li>Configured Closed Testing track for controlled early access distribution</li>
+        <li>Managed tester access using an email list, plus a feedback channel for user reports</li>
+        <li>Provided a privacy policy URL and documented how user data is handled</li>
+        <li>Completed the Data safety questionnaire (data handling disclosure + security-related declarations)</li>
+        <li>Completed the Content rating questionnaire and set Target audience (18+)</li>
+        <li>Completed Ads / Advertising ID related declarations and App access instructions as required</li>
+      </ul>
+
+      <p class="section-note" style="margin-top:12px;">
+        This documents real release management experience where privacy and security requirements must be addressed before distribution.
+      </p>
+    </article>
+
   </section>
 
   <section class="container">
     <h3>Security & Privacy</h3>
     <ul>
-      <li>Delivered over HTTPS (encrypted in transit)</li>
-      <li>No cookies, trackers, analytics, or backend services</li>
-      <li>Static architecture to minimize attack surface</li>
+      <li>Portfolio delivered over HTTPS (encrypted in transit)</li>
+      <li>Static portfolio architecture to minimize attack surface</li>
+      <li>Security headers enforced and verified in production response</li>
       <li>Responsible disclosure support via security.txt</li>
+      <li>FieldFlow (Early Access): account-based access control (Firebase Authentication) + server-side policy enforcement (Firestore rules)</li>
+      <li>Play Console early access workflow included privacy policy + data safety disclosures + controlled tester distribution</li>
     </ul>
   </section>
 
