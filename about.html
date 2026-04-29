@@ -3,77 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me – Adel Marcano</title>
+  <title>About Me - Adel Marcano</title>
 
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
 
-<body>
+<body class="page-about" data-page="about">
 
-<header class="site-header">
-  <div class="container header-row">
-    <div class="brand">
-      <div>
-        <h1 class="name">Adel Marcano</h1>
-        <p class="tagline">IT • Cybersecurity • Game Development • Web Design</p>
-      </div>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link active" href="about.html">About Me</a>
-        <a class="nav-link" href="cybersecurity.html">Cybersecurity/IT</a>
-        <a class="nav-link" href="gamedev.html">Game Development</a>
-        <a class="nav-link" href="web.html">Web Page Design</a>
-        <a class="nav-link" href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-
-    <div class="controls" aria-label="Display settings">
-      <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">🌙</button>
-      <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
-      <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
-      <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
-    </div>
-  </div>
-</header>
+<div data-site-header></div>
 
 <main class="content">
 
-  <!-- ABOUT -->
   <section class="container">
     <h2>About Me</h2>
 
     <p>
-      I’m Adel Marcano, a CompTIA Security+ certified cybersecurity senior at Old Dominion University. I work at the intersection
-      of IT operations and security, with hands-on experience supporting users, configuring systems, and validating security controls
-      across Windows and Linux environments.
+      I am Adel Marcano, and I earned my Bachelor of Science in Cybersecurity from Old Dominion University on
+      May 16, 2026. My work spans IT support, cybersecurity, web development, and mobile app development, with
+      hands-on experience across Windows and Linux environments and a strong focus on clean, practical execution.
     </p>
 
     <p>
-      I’m a fundamentals-first builder. I like finding what’s actually happening, fixing the root cause, and proving the fix worked.
-      That shows up in my security work (vulnerability assessment, hardening, and verification) and in my development work
-      (deploying real apps, setting up authentication, and enforcing least-privilege access rules).
-    </p>
-
-    <p>
-      I also care a lot about clarity—clean UI, readable systems, and documentation that someone else can follow. Whether I’m
-      troubleshooting, writing security rules, or shipping an early-access build, my goal is predictable behavior, secure defaults,
-      and steady improvement over time.
+      I have also published two apps to the Google Play Store: <strong>Nexom</strong>, a social platform with
+      privacy-conscious features like Bluetooth family pairing and separate adult and teen account experiences,
+      and <strong>Fieldflow</strong>, a note-taking app built to keep information available across devices.
     </p>
 
     <p class="section-note">
-      I’m currently pursuing entry-level IT, SOC, or security operations roles where I can keep learning while contributing to real-world
-      security and support work.
+      I am especially interested in entry-level IT, cybersecurity, application support, or junior development roles
+      where I can keep learning while contributing to real technical products.
     </p>
   </section>
 
-  <!-- RESUME -->
   <section class="container">
-    <h3>Résumé</h3>
+    <h3>Resume</h3>
 
     <p>
-      A copy of my résumé is available below.
+      An updated copy of my resume is available below.
     </p>
 
     <a
@@ -83,31 +50,31 @@
       rel="noreferrer"
       download
     >
-      Download Résumé (PDF)
+      Download Resume (PDF)
     </a>
+
+    <p class="section-note link-note">
+      Prefer a browser-readable version? <a href="resume.html" target="_blank" rel="noreferrer">Open the resume page</a>.
+    </p>
   </section>
 
-  <!-- TECHNICAL INTERESTS -->
   <section class="container">
     <h3>Technical Interests</h3>
     <ul>
       <li>IT support, troubleshooting, and user-focused problem resolution</li>
-      <li>Windows and Linux security fundamentals and secure configuration</li>
-      <li>Vulnerability assessment, remediation, and validation workflows</li>
-      <li>Identity and access control (authentication + least privilege enforcement)</li>
-      <li>Secure web/app deployment and configuration verification</li>
+      <li>Cybersecurity fundamentals, secure configuration, and safe lab practice</li>
+      <li>Vulnerability assessment and system hardening</li>
+      <li>Secure web deployment and configuration validation</li>
+      <li>Mobile app development with privacy-conscious and cross-device features</li>
       <li>Web design with accessibility and maintainability in mind</li>
       <li>Game systems, logic-driven mechanics, and interactive development</li>
     </ul>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Adel Marcano</p>
-    </div>
-  </footer>
-
 </main>
+
+<div data-site-footer></div>
+<div data-site-modal></div>
 
 </body>
 </html>

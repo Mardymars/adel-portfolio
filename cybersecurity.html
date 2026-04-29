@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cybersecurity / IT – Adel Marcano</title>
+  <title>Cybersecurity / IT - Adel Marcano</title>
 
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 
-  <!-- Nessus gallery styling -->
   <style>
     .nessus-gallery {
       position: relative;
@@ -37,7 +36,7 @@
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(0,0,0,0.55);
+      background: rgba(0, 0, 0, 0.55);
       color: #fff;
       text-decoration: none;
       font-size: 18px;
@@ -46,7 +45,7 @@
     }
 
     .nessus-gallery .nav-btn:hover {
-      background: rgba(0,0,0,0.75);
+      background: rgba(0, 0, 0, 0.75);
     }
 
     .nessus-gallery .prev { left: 12px; }
@@ -59,56 +58,17 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(0,0,0,0.55);
+      background: rgba(0, 0, 0, 0.55);
       color: #fff;
       font-size: 12px;
       letter-spacing: 0.2px;
     }
-
-    /* lightweight code block styling (no new classes needed) */
-    pre {
-      margin: 14px 0 0;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,0.35);
-      overflow: auto;
-      line-height: 1.35;
-      font-size: 13px;
-    }
-
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
 
-<body>
+<body class="page-cyber" data-page="cyber">
 
-<header class="site-header">
-  <div class="container header-row">
-    <div class="brand">
-      <div>
-        <h1 class="name">Adel Marcano</h1>
-        <p class="tagline">IT • Cybersecurity • Game Development • Web Design</p>
-      </div>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About Me</a>
-        <a class="nav-link active" href="cybersecurity.html">Cybersecurity/IT</a>
-        <a class="nav-link" href="gamedev.html">Game Development</a>
-        <a class="nav-link" href="web.html">Web Page Design</a>
-        <a class="nav-link" href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-
-    <div class="controls" aria-label="Display settings">
-      <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">🌙</button>
-      <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
-      <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
-      <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
-    </div>
-  </div>
-</header>
+<div data-site-header></div>
 
 <main class="content">
 
@@ -119,10 +79,7 @@
       and measurable attack surface reduction through practical, documented work.
     </p>
     <p class="section-note">
-      The artifacts below demonstrate implementation and validation of real security controls and real deployment workflows.
-    </p>
-    <p class="section-note">
-      Note: some application and platform work is documented as text-only to avoid exposing user data or internal app details.
+      The artifacts below demonstrate implementation and validation of real security controls on a live deployment.
     </p>
   </section>
 
@@ -133,7 +90,6 @@
       <li>Threat awareness, including XSS, clickjacking, and configuration-driven risks</li>
       <li>Secure static-site deployment using GitHub + Netlify</li>
       <li>Security headers: implement, verify, and maintain</li>
-      <li>Identity and access control through authentication + server-side policy enforcement</li>
       <li>Clear troubleshooting, documentation, and change tracking</li>
     </ul>
   </section>
@@ -144,58 +100,54 @@
       These artifacts show both configuration and verification, ensuring controls are not only defined but actively enforced.
     </p>
 
-    <!-- Artifact 1 -->
-    <article class="card" style="padding:22px;">
-      <h4 style="margin-top:0;">Artifact 1: Security Header Configuration (_headers)</h4>
+    <article class="card">
+      <h4>Artifact 1: Security Header Configuration (_headers)</h4>
       <p>
         I implemented baseline hardening headers and a Content Security Policy (CSP) to reduce common web risks such as
         clickjacking, MIME sniffing, excessive browser permissions, and script injection exposure.
       </p>
 
-      <figure style="margin:16px 0 0;">
+      <figure class="artifact-figure">
         <img
-          src="/images/cyber_artifact1_headers.png"
+          class="artifact-media"
+          src="images/cyber_artifact1_headers.png"
           alt="GitHub screenshot showing the Netlify _headers file with security headers and CSP configuration"
-          style="width:100%; height:auto; border-radius:16px; border:1px solid var(--border);"
           loading="lazy"
         />
-        <figcaption class="section-note" style="margin-top:10px;">
-          Configuration proof: headers + CSP defined in Netlify _headers.
+        <figcaption class="section-note artifact-caption">
+          Configuration proof: headers and CSP defined in Netlify _headers.
         </figcaption>
       </figure>
 
-      <ul style="margin-top:14px;">
-        <li>Clickjacking mitigation (frame restrictions)</li>
+      <ul class="artifact-bullets">
+        <li>Clickjacking mitigation through frame restrictions</li>
         <li>MIME-type sniffing protection</li>
         <li>Permissions-Policy hardening</li>
-        <li>COOP/CORP controls to reduce cross-origin exposure</li>
+        <li>COOP and CORP controls to reduce cross-origin exposure</li>
         <li>CSP tuned for a static portfolio architecture</li>
       </ul>
     </article>
 
-    <div style="height:18px;"></div>
-
-    <!-- Artifact 2 -->
-    <article class="card" style="padding:22px;">
-      <h4 style="margin-top:0;">Artifact 2: Verification (Browser Response Headers)</h4>
-      <p>
+    <article class="card artifact">
+      <h4 class="artifact-title">Artifact 2: Verification (Browser Response Headers)</h4>
+      <p class="artifact-desc">
         After deployment, I validated the live HTTPS response in DevTools to confirm the intended headers were
-        actually being served in production (not just present in source).
+        actually being served in production and not just present in source.
       </p>
 
-      <figure style="margin:16px 0 0;">
+      <figure class="artifact-figure">
         <img
-          src="/images/cyber_artifact2_response_headers.png"
+          class="artifact-media"
+          src="images/cyber_artifact2_response_headers.png"
           alt="Browser DevTools screenshot showing Response Headers including CSP, HSTS, X-Frame-Options, and related security headers"
-          style="width:100%; height:auto; border-radius:16px; border:1px solid var(--border);"
           loading="lazy"
         />
-        <figcaption class="section-note" style="margin-top:10px;">
+        <figcaption class="section-note artifact-caption">
           Validation proof: headers observed in the live production response.
         </figcaption>
       </figure>
 
-      <ul style="margin-top:14px;">
+      <ul class="artifact-bullets">
         <li>Confirms HTTPS enforcement and HSTS in production</li>
         <li>Confirms CSP is delivered by the platform</li>
         <li>Confirms frame protections and permissions hardening</li>
@@ -203,12 +155,9 @@
       </ul>
     </article>
 
-    <div style="height:18px;"></div>
-
-    <!-- Artifact 3 -->
-    <article class="card" style="padding:22px;">
-      <h4 style="margin-top:0;">Artifact 3: Nessus Essentials Vulnerability Scan (Windows 11)</h4>
-      <p>
+    <article class="card artifact">
+      <h4 class="artifact-title">Artifact 3: Nessus Essentials Vulnerability Scan (Windows 11)</h4>
+      <p class="artifact-desc">
         I executed a baseline vulnerability scan of a Windows 11 host using Nessus Essentials, reviewed identified findings,
         and documented remediation steps and validation outcomes.
       </p>
@@ -216,162 +165,64 @@
       <div class="nessus-gallery" aria-label="Nessus screenshot gallery">
         <figure id="ness1" class="ness-slide">
           <img
-            src="/images/ness1.png"
+            src="images/ness1.png"
             alt="Nessus scan overview showing vulnerability list and severity breakdown"
             loading="lazy"
           />
-          <span class="label">1 / 3 • Scan Overview</span>
-          <a class="nav-btn prev" href="#ness3" aria-label="Previous image">‹</a>
-          <a class="nav-btn next" href="#ness2" aria-label="Next image">›</a>
+          <span class="label">1 / 3 - Scan Overview</span>
+          <a class="nav-btn prev" href="#ness3" aria-label="Previous image">&lsaquo;</a>
+          <a class="nav-btn next" href="#ness2" aria-label="Next image">&rsaquo;</a>
         </figure>
 
         <figure id="ness2" class="ness-slide">
           <img
-            src="/images/ness2.png"
+            src="images/ness2.png"
             alt="Registry Editor showing remediation related to SMB signing hardening"
             loading="lazy"
           />
-          <span class="label">2 / 3 • Remediation Evidence</span>
-          <a class="nav-btn prev" href="#ness1" aria-label="Previous image">‹</a>
-          <a class="nav-btn next" href="#ness3" aria-label="Next image">›</a>
+          <span class="label">2 / 3 - Remediation Evidence</span>
+          <a class="nav-btn prev" href="#ness1" aria-label="Previous image">&lsaquo;</a>
+          <a class="nav-btn next" href="#ness3" aria-label="Next image">&rsaquo;</a>
         </figure>
 
         <figure id="ness3" class="ness-slide">
           <img
-            src="/images/ness3.png"
+            src="images/ness3.png"
             alt="Nessus scan history showing completed scans and timestamps"
             loading="lazy"
           />
-          <span class="label">3 / 3 • Scan History</span>
-          <a class="nav-btn prev" href="#ness2" aria-label="Previous image">‹</a>
-          <a class="nav-btn next" href="#ness1" aria-label="Next image">›</a>
+          <span class="label">3 / 3 - Scan History</span>
+          <a class="nav-btn prev" href="#ness2" aria-label="Previous image">&lsaquo;</a>
+          <a class="nav-btn next" href="#ness1" aria-label="Next image">&rsaquo;</a>
         </figure>
       </div>
 
-      <p class="section-note" style="margin-top:10px;">
+      <p class="section-note link-note">
         Use the arrows to cycle through scan evidence.
       </p>
 
-      <ul style="margin-top:14px;">
+      <ul class="artifact-bullets">
         <li>Baseline scan of a Windows 11 host using Nessus Essentials</li>
         <li>Reviewed findings and referenced remediation guidance</li>
         <li>Captured remediation evidence and scan history for repeatability</li>
       </ul>
     </article>
-
-    <div style="height:18px;"></div>
-
-    <!-- Artifact 4 (text-only: FieldFlow + Firebase) -->
-    <article class="card" style="padding:22px;">
-      <h4 style="margin-top:0;">Artifact 4: FieldFlow (Early Access) — Secure Cross-Device Data (Text-Only)</h4>
-      <p>
-        FieldFlow is an Android application distributed through Google Play Closed Testing (Early Access).
-        It helps users keep important information safe and available across devices (so data isn’t lost when switching phones),
-        with organization features like notes, territories, and reminders for ministry workflow.
-      </p>
-
-      <ul style="margin-top:14px;">
-        <li>Built a cloud-backed data model focused on reliability and secure access across devices</li>
-        <li>Used Firebase Authentication to protect accounts and require sign-in before accessing private data</li>
-        <li>Stored user content in Firestore with server-side rules designed around least privilege (scoped access, not broad access)</li>
-        <li>Tested security behavior by comparing allowed actions vs restricted actions (permission-denied outcomes for blocked operations)</li>
-      </ul>
-
-      <p class="section-note" style="margin-top:12px;">
-        Documented as text-only to avoid exposing user data or internal app screens while still describing the security control and validation approach.
-      </p>
-    </article>
-
-    <div style="height:18px;"></div>
-
-    <!-- Artifact 5 (text-only: Firebase accounts + rules) -->
-    <article class="card" style="padding:22px;">
-      <h4 style="margin-top:0;">Artifact 5: Firebase Account Security + Firestore Rules (Text-Only)</h4>
-      <p>
-        For FieldFlow, I treated authentication and authorization as separate layers: users must be authenticated, and access is
-        still restricted by server-side database rules. This reduces the risk of a client-side bypass and keeps enforcement at the policy layer.
-      </p>
-
-      <ul style="margin-top:14px;">
-        <li>Account protection through Firebase Authentication (sign-in required for private content)</li>
-        <li>Data isolation: rules scope reads/writes so users can only access the data they are allowed to access</li>
-        <li>Write protection: prevents unauthorized edits and unsafe updates by enforcing rule constraints</li>
-        <li>Validation workflow: attempt restricted actions → confirm permission-denied → confirm intended actions succeed</li>
-      </ul>
-
-      <p class="section-note" style="margin-top:12px;">
-        Simplified, non-sensitive rules excerpt (structure only):
-      </p>
-
-      <pre><code>// Firestore Rules (simplified structure example)
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    function signedIn() { return request.auth != null; }
-
-    // Example: each user can only access their own profile doc
-    match /users/{uid} {
-      allow read, write: if signedIn() &amp;&amp; request.auth.uid == uid;
-    }
-
-    // Example: user-scoped notes (ownership checks are stricter in live rules)
-    match /notes/{noteId} {
-      allow read, write: if signedIn();
-    }
-  }
-}</code></pre>
-
-      <p class="section-note" style="margin-top:12px;">
-        Live rules are more restrictive than this excerpt (ownership/membership checks + write constraints), but this shows the security approach.
-      </p>
-    </article>
-
-    <div style="height:18px;"></div>
-
-    <!-- Artifact 6 (text-only: Play Console privacy/security requirements) -->
-    <article class="card" style="padding:22px;">
-      <h4 style="margin-top:0;">Artifact 6: Google Play Requirements (Privacy + Security + Early Access Workflow)</h4>
-      <p>
-        To distribute FieldFlow in Google Play Closed Testing, I worked through required Play Console steps that focus on privacy, security transparency,
-        and controlled distribution during early access.
-      </p>
-
-      <ul style="margin-top:14px;">
-        <li>Configured Closed Testing track for controlled early access distribution</li>
-        <li>Managed tester access using an email list, plus a feedback channel for user reports</li>
-        <li>Provided a privacy policy URL and documented how user data is handled</li>
-        <li>Completed the Data safety questionnaire (data handling disclosure + security-related declarations)</li>
-        <li>Completed the Content rating questionnaire and set Target audience (18+)</li>
-        <li>Completed Ads / Advertising ID related declarations and App access instructions as required</li>
-      </ul>
-
-      <p class="section-note" style="margin-top:12px;">
-        This documents real release management experience where privacy and security requirements must be addressed before distribution.
-      </p>
-    </article>
-
   </section>
 
   <section class="container">
-    <h3>Security & Privacy</h3>
+    <h3>Security and Privacy</h3>
     <ul>
-      <li>Portfolio delivered over HTTPS (encrypted in transit)</li>
-      <li>Static portfolio architecture to minimize attack surface</li>
-      <li>Security headers enforced and verified in production response</li>
+      <li>Delivered over HTTPS and encrypted in transit</li>
+      <li>No cookies, trackers, analytics, or backend services</li>
+      <li>Static architecture to minimize attack surface</li>
       <li>Responsible disclosure support via security.txt</li>
-      <li>FieldFlow (Early Access): account-based access control (Firebase Authentication) + server-side policy enforcement (Firestore rules)</li>
-      <li>Play Console early access workflow included privacy policy + data safety disclosures + controlled tester distribution</li>
     </ul>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Adel Marcano</p>
-    </div>
-  </footer>
-
 </main>
+
+<div data-site-footer></div>
+<div data-site-modal></div>
 
 </body>
 </html>

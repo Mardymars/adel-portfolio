@@ -9,74 +9,45 @@
   <script src="script.js" defer></script>
 </head>
 
-<body>
+<body class="page-home" data-page="home">
 
-<header class="site-header">
-  <div class="container header-row">
-    <div class="brand">
-      <div>
-        <h1 class="name">Adel Marcano</h1>
-        <p class="tagline">IT • Cybersecurity • Game Development • Web Design</p>
-      </div>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About Me</a>
-        <a class="nav-link" href="cybersecurity.html">Cybersecurity/IT</a>
-        <a class="nav-link" href="gamedev.html">Game Development</a>
-        <a class="nav-link" href="web.html">Web Page Design</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
-    </div>
-
-    <div class="controls">
-      <button id="feedbackOpen" class="btn" type="button">Feedback</button>
-
-      <button id="themeToggle" class="btn" type="button">🌙</button>
-      <button id="textSmall" class="btn" type="button">A-</button>
-      <button id="textNormal" class="btn" type="button">A</button>
-      <button id="textLarge" class="btn" type="button">A+</button>
-    </div>
-  </div>
-</header>
+<div data-site-header></div>
 
 <section class="hero-carousel">
-  <button class="hero-arrow left" id="prevBtn" type="button">←</button>
+  <button class="hero-arrow left" id="prevBtn" type="button" aria-label="Previous slide">&larr;</button>
 
   <div class="hero-viewport">
     <div class="hero-track" id="carouselTrack">
-
       <a class="hero-slide" href="cybersecurity.html">
-        <img class="hero-img" src="images/cyber.png" alt="Cybersecurity">
+        <img class="hero-img" src="images/cyber.png" alt="Cybersecurity" />
         <div class="hero-overlay"></div>
         <div class="hero-text">
           <h2>Cybersecurity / IT</h2>
-          <p>Labs, tools, troubleshooting, security fundamentals</p>
+          <p>Labs, tools, troubleshooting, and secure configuration.</p>
         </div>
       </a>
 
       <a class="hero-slide" href="gamedev.html">
-        <img class="hero-img" src="images/gamedev.png" alt="Game Development">
+        <img class="hero-img" src="images/gamedev.png" alt="Game Development" />
         <div class="hero-overlay"></div>
         <div class="hero-text">
           <h2>Game Development</h2>
-          <p>Unity projects, mechanics, systems, dev logs</p>
+          <p>Unity projects, combat systems, branching dialogue, and iteration.</p>
         </div>
       </a>
 
       <a class="hero-slide" href="web.html">
-        <img class="hero-img" src="images/web.png" alt="Web Design">
+        <img class="hero-img" src="images/web.png" alt="Web Design" />
         <div class="hero-overlay"></div>
         <div class="hero-text">
           <h2>Web Page Design</h2>
-          <p>HTML, CSS, JavaScript, accessibility, responsive layout</p>
+          <p>HTML, CSS, JavaScript, accessibility, and responsive layout.</p>
         </div>
       </a>
-
     </div>
   </div>
 
-  <button class="hero-arrow right" id="nextBtn" type="button">→</button>
+  <button class="hero-arrow right" id="nextBtn" type="button" aria-label="Next slide">&rarr;</button>
 </section>
 
 <main class="content">
@@ -85,19 +56,19 @@
     <h2>About Me</h2>
 
     <p>
-      My name is Adel Marcano, and this website serves as a central hub for my
-      professional skills and <span class="kw">hands-on projects</span>. My work spans
-      <span class="kw">IT</span>, <span class="kw">cybersecurity fundamentals</span>,
-      <span class="kw">web design</span>, and <span class="kw">game development</span>,
-      with a strong emphasis on <span class="kw">structured thinking</span>,
-      <span class="kw">secure practices</span>, and <span class="kw">problem-solving</span>.
+      My name is Adel Marcano, and this website serves as a central hub for my professional skills and
+      <span class="kw">hands-on projects</span>. My work spans <span class="kw">IT</span>,
+      <span class="kw">cybersecurity fundamentals</span>, <span class="kw">mobile app development</span>,
+      <span class="kw">web design</span>, and <span class="kw">game development</span>, with a strong emphasis on
+      <span class="kw">structured thinking</span>, <span class="kw">secure practices</span>, and
+      <span class="kw">problem-solving</span>.
     </p>
 
     <p>
-      Here you’ll find documented labs, tools, and projects that demonstrate how I
-      approach technical challenges, from system troubleshooting and vulnerability
-      awareness to building clean, accessible user interfaces. For a more detailed
-      background and my resume, please see the <strong>About Me</strong> page.
+      Here you will find documented labs, tools, and projects that demonstrate how I approach technical challenges,
+      from system troubleshooting and vulnerability awareness to building published mobile apps and clean,
+      accessible user interfaces. For a more detailed background and my resume, please see the
+      <strong>About Me</strong> page.
     </p>
   </section>
 
@@ -107,19 +78,19 @@
     <div class="cards">
       <article class="card">
         <h3>Cybersecurity / IT</h3>
-        <p>Foundational security knowledge, labs, and troubleshooting.</p>
+        <p>Foundational security knowledge, labs, troubleshooting, and system hardening.</p>
         <a class="card-btn" href="cybersecurity.html">Learn More</a>
       </article>
 
       <article class="card">
         <h3>Game Development</h3>
-        <p>Unity projects, mechanics, and iterative design.</p>
+        <p>Unity projects, mechanics, dialogue systems, and iterative gameplay design.</p>
         <a class="card-btn" href="gamedev.html">Learn More</a>
       </article>
 
       <article class="card">
         <h3>Web Page Design</h3>
-        <p>Accessible, responsive layouts and clean UI.</p>
+        <p>Accessible, responsive layouts with a clean and maintainable front-end structure.</p>
         <a class="card-btn" href="web.html">Learn More</a>
       </article>
     </div>
@@ -137,99 +108,10 @@
     </p>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Adel Marcano</p>
-    </div>
-  </footer>
-
 </main>
 
-<!-- ===== Feedback Modal (Netlify form) ===== -->
-<div id="feedbackModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
-  <div class="modal-card">
-    <button id="feedbackClose" class="modal-close" type="button" aria-label="Close">×</button>
-
-    <h2 id="feedbackTitle">Quick Feedback</h2>
-    <p class="modal-sub">What did you like, what did you view, and what can I improve?</p>
-
-    <form
-      name="website-feedback"
-      method="POST"
-      action="/thanks.html"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-
-    >
-      <input type="hidden" name="form-name" value="website-feedback" />
-      
-
-
-      <p class="hidden">
-        <label>Don’t fill this out: <input name="bot-field" /></label>
-      </p>
-
-      <label class="field">
-        What did you like most?
-        <select name="liked_most" required>
-          <option value="" selected disabled>Select one</option>
-          <option>Design / Layout</option>
-          <option>Cybersecurity / IT content</option>
-          <option>Game Development content</option>
-          <option>Web Page Design content</option>
-          <option>Overall professionalism</option>
-        </select>
-      </label>
-
-      <fieldset class="field">
-        <legend>Which pages did you view?</legend>
-
-        <div class="check-grid">
-          <label class="check">
-            <input type="checkbox" name="viewed_pages" value="Home">
-            <span>Home</span>
-          </label>
-
-          <label class="check">
-            <input type="checkbox" name="viewed_pages" value="About">
-            <span>About</span>
-          </label>
-
-          <label class="check">
-            <input type="checkbox" name="viewed_pages" value="Cybersecurity/IT">
-            <span>Cybersecurity/IT</span>
-          </label>
-
-          <label class="check">
-            <input type="checkbox" name="viewed_pages" value="Game Development">
-            <span>Game Development</span>
-          </label>
-
-          <label class="check">
-            <input type="checkbox" name="viewed_pages" value="Web Page Design">
-            <span>Web Page Design</span>
-          </label>
-        </div>
-      </fieldset>
-
-      <label class="field">
-        Comment (optional)
-        <textarea
-          name="comment"
-          rows="4"
-          placeholder="One suggestion that would make this site better..."
-        ></textarea>
-      </label>
-
-      <button type="submit" class="card-btn">Send</button>
-
-      <p class="modal-foot">
-        This form is handled by Netlify. Thanks for helping me improve.
-      </p>
-    </form>
-  </div>
-</div>
+<div data-site-footer></div>
+<div data-site-modal></div>
 
 </body>
 </html>
-

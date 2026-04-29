@@ -3,40 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Page Design – Adel Marcano</title>
+  <title>Web Page Design - Adel Marcano</title>
 
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
 
-<body>
+<body class="page-web" data-page="web">
 
-<header class="site-header">
-  <div class="container header-row">
-    <div class="brand">
-      <div>
-        <h1 class="name">Adel Marcano</h1>
-        <p class="tagline">IT • Cybersecurity • Game Development • Web Design</p>
-      </div>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About Me</a>
-        <a class="nav-link" href="cybersecurity.html">Cybersecurity/IT</a>
-        <a class="nav-link" href="gamedev.html">Game Development</a>
-        <a class="nav-link active" href="web.html">Web Page Design</a>
-        <a class="nav-link" href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-
-    <div class="controls">
-      <button id="themeToggle" class="btn" type="button">🌙</button>
-      <button id="textSmall" class="btn" type="button">A-</button>
-      <button id="textNormal" class="btn" type="button">A</button>
-      <button id="textLarge" class="btn" type="button">A+</button>
-    </div>
-  </div>
-</header>
+<div data-site-header></div>
 
 <main class="content">
 
@@ -54,8 +29,8 @@
     <ul>
       <li>Multi-page site structure with shared styling and scripts</li>
       <li>Responsive layout design for desktop and mobile</li>
-      <li>Accessible UI patterns (focus states, readable contrast, text resizing)</li>
-      <li>Vanilla JavaScript interactions (state, events, DOM updates)</li>
+      <li>Accessible UI patterns including focus states, readable contrast, and text resizing</li>
+      <li>Vanilla JavaScript interactions involving state, events, and DOM updates</li>
       <li>Clean organization of assets and reusable components</li>
     </ul>
   </section>
@@ -67,7 +42,7 @@
     </p>
 
     <article class="card artifact">
-      <h4 class="artifact-title">Artifact 1: Workflow & Deployment (GitHub + Netlify)</h4>
+      <h4 class="artifact-title">Artifact 1: Workflow and Deployment (GitHub + Netlify)</h4>
       <p class="artifact-desc">
         Repository structure and deployment history showing version control, iterative updates, and continuous delivery.
       </p>
@@ -80,21 +55,21 @@
           loading="lazy"
         />
         <figcaption class="section-note artifact-caption">
-          GitHub repository + deployment workflow evidence.
+          GitHub repository and deployment workflow evidence.
         </figcaption>
       </figure>
 
       <ul class="artifact-bullets">
         <li>Commit history and controlled changes</li>
         <li>Automated deploy pipeline</li>
-        <li>Organized HTML/CSS/JS/assets structure</li>
+        <li>Organized HTML, CSS, JS, and asset structure</li>
       </ul>
     </article>
 
     <article class="card artifact">
-      <h4 class="artifact-title">Artifact 2: Interactive + Accessibility UI (GIF Demo)</h4>
+      <h4 class="artifact-title">Artifact 2: Interactive and Accessibility UI (GIF Demo)</h4>
       <p class="artifact-desc">
-        Demonstration of UI state and interactions implemented without frameworks (theme, text sizing, carousel controls).
+        Demonstration of UI state and interactions implemented without frameworks, including theme, text sizing, and carousel controls.
       </p>
 
       <figure class="artifact-figure">
@@ -111,8 +86,8 @@
 
       <ul class="artifact-bullets">
         <li>DOM events and state updates</li>
-        <li>Usability controls (theme + font size)</li>
-        <li>Component behavior (carousel navigation)</li>
+        <li>Usability controls such as theme and font size</li>
+        <li>Component behavior through carousel navigation</li>
       </ul>
     </article>
   </section>
@@ -127,13 +102,10 @@
     </ul>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Adel Marcano</p>
-    </div>
-  </footer>
-
 </main>
+
+<div data-site-footer></div>
+<div data-site-modal></div>
 
 </body>
 </html>

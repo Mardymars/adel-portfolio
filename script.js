@@ -1,34 +1,180 @@
 (() => {
-  // Smooth scroll for anchor links
-  // IMPORTANT: Do NOT hijack gallery navigation hashes (nessus arrows)
+  const pageKey = document.body.dataset.page || "home";
+  const feedbackEnabled = document.body.dataset.feedback !== "false";
+
+  function renderSiteShell() {
+    const navItems = [
+      { key: "home", label: "Home", href: "index.html" },
+      { key: "about", label: "About Me", href: "about.html" },
+      { key: "cyber", label: "Cybersecurity/IT", href: "cybersecurity.html" },
+      { key: "gamedev", label: "Game Development", href: "gamedev.html" },
+      { key: "web", label: "Web Page Design", href: "web.html" },
+      { key: "contact", label: "Contact", href: pageKey === "home" ? "#contact" : "index.html#contact" }
+    ];
+
+    const navMarkup = navItems.map((item) => {
+      const isActive = item.key === pageKey;
+      const currentAttr = isActive ? ' aria-current="page"' : "";
+      const activeClass = isActive ? " active" : "";
+      return `<a class="nav-link${activeClass}" href="${item.href}"${currentAttr}>${item.label}</a>`;
+    }).join("");
+
+    const headerMarkup = `
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">
+      <div>
+        <h1 class="name">Adel Marcano</h1>
+        <p class="tagline">IT &bull; Cybersecurity &bull; Game Development &bull; Web Design</p>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        ${navMarkup}
+      </nav>
+    </div>
+
+    <div class="controls" aria-label="Site controls">
+      ${feedbackEnabled ? '<button id="feedbackOpen" class="btn" type="button">Feedback</button>' : ""}
+      <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">Moon</button>
+      <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
+      <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
+      <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
+    </div>
+  </div>
+</header>`;
+
+    const footerMarkup = `
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Adel Marcano</p>
+  </div>
+</footer>`;
+
+    const modalMarkup = feedbackEnabled ? `
+<div id="feedbackModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+  <div class="modal-card">
+    <button id="feedbackClose" class="modal-close" type="button" aria-label="Close">&times;</button>
+
+    <h2 id="feedbackTitle">Quick Feedback</h2>
+    <p class="modal-sub">What did you like, what did you view, and what can I improve?</p>
+
+    <form
+      name="website-feedback"
+      method="POST"
+      action="thanks.html"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="website-feedback" />
+
+      <p class="hidden">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <label class="field">
+        What did you like most?
+        <select name="liked_most" required>
+          <option value="" selected disabled>Select one</option>
+          <option>Design / Layout</option>
+          <option>Cybersecurity / IT content</option>
+          <option>Game Development content</option>
+          <option>Web Page Design content</option>
+          <option>Overall professionalism</option>
+        </select>
+      </label>
+
+      <fieldset class="field">
+        <legend>Which pages did you view?</legend>
+
+        <div class="check-grid">
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Home" />
+            <span>Home</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="About" />
+            <span>About</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Cybersecurity/IT" />
+            <span>Cybersecurity/IT</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Game Development" />
+            <span>Game Development</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="viewed_pages" value="Web Page Design" />
+            <span>Web Page Design</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <label class="field">
+        Comment (optional)
+        <textarea
+          name="comment"
+          rows="4"
+          placeholder="One suggestion that would make this site better..."
+        ></textarea>
+      </label>
+
+      <button type="submit" class="card-btn">Send</button>
+
+      <p class="modal-foot">
+        This form is handled by Netlify. Thanks for helping me improve.
+      </p>
+    </form>
+  </div>
+</div>` : "";
+
+    const headerTarget = document.querySelector("[data-site-header]");
+    if (headerTarget) {
+      headerTarget.outerHTML = headerMarkup;
+    }
+
+    const footerTarget = document.querySelector("[data-site-footer]");
+    if (footerTarget) {
+      footerTarget.outerHTML = footerMarkup;
+    }
+
+    const modalTarget = document.querySelector("[data-site-modal]");
+    if (modalTarget) {
+      modalTarget.outerHTML = modalMarkup;
+    }
+  }
+
+  renderSiteShell();
+
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener("click", (event) => {
       const id = link.getAttribute("href");
       if (!id || id === "#") return;
 
-      // If the link is inside the Nessus gallery, let the gallery handler manage it
       if (link.closest(".nessus-gallery")) return;
 
       const target = document.querySelector(id);
       if (!target) return;
 
-      e.preventDefault();
+      event.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
       history.pushState(null, "", id);
     });
   });
 
-  // ===== Nessus Gallery (fix refresh issue) =====
   const gallery = document.querySelector(".nessus-gallery");
   if (gallery) {
     const slides = Array.from(gallery.querySelectorAll(".ness-slide"));
-    const ids = slides.map(s => s.id).filter(Boolean);
+    const ids = slides.map((slide) => slide.id).filter(Boolean);
 
     function showSlideById(id) {
-      // fallback to first if unknown
       const safeId = ids.includes(id) ? id : (ids[0] || "");
-      slides.forEach((s) => {
-        s.style.display = (s.id === safeId) ? "block" : "none";
+      slides.forEach((slide) => {
+        slide.style.display = slide.id === safeId ? "block" : "none";
       });
     }
 
@@ -36,32 +182,25 @@
       return (window.location.hash || "").replace("#", "");
     }
 
-    // Initial render
-    const initial = getHashId();
-    showSlideById(initial || ids[0]);
+    showSlideById(getHashId() || ids[0]);
 
-    // Handle arrow clicks
-    gallery.querySelectorAll('a[href^="#"]').forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const href = btn.getAttribute("href");
+    gallery.querySelectorAll('a[href^="#"]').forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const href = button.getAttribute("href");
         const id = (href || "").replace("#", "");
         if (!id) return;
 
-        e.preventDefault();
-        // Update URL + show immediately
+        event.preventDefault();
         history.pushState(null, "", `#${id}`);
         showSlideById(id);
       });
     });
 
-    // If user manually changes hash (or uses back/forward)
     window.addEventListener("hashchange", () => {
-      const id = getHashId();
-      showSlideById(id || ids[0]);
+      showSlideById(getHashId() || ids[0]);
     });
   }
 
-  // ===== Carousel (safe on pages without carousel) =====
   let index = 0;
   const track = document.getElementById("carouselTrack");
   const slides = document.querySelectorAll(".hero-slide");
@@ -84,11 +223,11 @@
       updateCarousel();
     });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") {
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
         index = (index + 1) % slides.length;
         updateCarousel();
-      } else if (e.key === "ArrowLeft") {
+      } else if (event.key === "ArrowLeft") {
         index = (index - 1 + slides.length) % slides.length;
         updateCarousel();
       }
@@ -97,7 +236,6 @@
     updateCarousel();
   }
 
-  // ===== Theme + Text size (safe on pages without controls) =====
   const themeToggle = document.getElementById("themeToggle");
   const textSmall = document.getElementById("textSmall");
   const textNormal = document.getElementById("textNormal");
@@ -106,20 +244,26 @@
   const savedTheme = localStorage.getItem("theme");
   const savedFont = localStorage.getItem("fontSize");
 
-  if (savedTheme === "dark") document.body.classList.add("dark");
-  if (savedFont) document.documentElement.style.setProperty("--base-font", savedFont);
-
-  function updateThemeIcon() {
-    if (!themeToggle) return;
-    themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
   }
-  updateThemeIcon();
+
+  if (savedFont) {
+    document.documentElement.style.setProperty("--base-font", savedFont);
+  }
+
+  function updateThemeButton() {
+    if (!themeToggle) return;
+    themeToggle.textContent = document.body.classList.contains("dark") ? "Sun" : "Moon";
+  }
+
+  updateThemeButton();
 
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark");
       localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-      updateThemeIcon();
+      updateThemeButton();
     });
   }
 
@@ -132,11 +276,11 @@
   if (textNormal) textNormal.addEventListener("click", () => setFontSize("20px"));
   if (textLarge) textLarge.addEventListener("click", () => setFontSize("24px"));
 
-  // Footer year (safe)
   const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
-  // ===== Feedback modal open/close =====
   const modal = document.getElementById("feedbackModal");
   const openBtn = document.getElementById("feedbackOpen");
   const closeBtn = document.getElementById("feedbackClose");
@@ -157,13 +301,13 @@
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
   if (modal) {
-    modal.addEventListener("click", (e) => {
+    modal.addEventListener("click", (event) => {
       const card = modal.querySelector(".modal-card");
-      if (card && !card.contains(e.target)) closeModal();
+      if (card && !card.contains(event.target)) closeModal();
     });
   }
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
   });
 })();
