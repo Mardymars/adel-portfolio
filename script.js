@@ -21,24 +21,41 @@
 
     const headerMarkup = `
 <header class="site-header">
-  <div class="container header-row">
-    <div class="brand">
-      <div>
-        <h1 class="name">Adel Marcano</h1>
-        <p class="tagline">IT &bull; Cybersecurity &bull; Game Development &bull; Web Design</p>
+  <div class="container site-shell">
+    <div class="header-top">
+      <div class="brand">
+        <div>
+          <h1 class="name">Adel Marcano</h1>
+          <p class="tagline">IT &bull; Cybersecurity &bull; Game Development &bull; Web Design</p>
+        </div>
       </div>
 
-      <nav class="nav" aria-label="Primary navigation">
-        ${navMarkup}
-      </nav>
+      <button
+        id="menuToggle"
+        class="btn menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="siteMenu"
+        aria-label="Toggle navigation"
+      >
+        Menu
+      </button>
     </div>
 
-    <div class="controls" aria-label="Site controls">
-      ${feedbackEnabled ? '<button id="feedbackOpen" class="btn" type="button">Feedback</button>' : ""}
-      <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">Moon</button>
-      <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
-      <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
-      <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
+    <div class="header-panel" id="siteMenu">
+      <div>
+        <nav class="nav" aria-label="Primary navigation">
+          ${navMarkup}
+        </nav>
+      </div>
+
+      <div class="controls" aria-label="Site controls">
+        ${feedbackEnabled ? '<button id="feedbackOpen" class="btn" type="button">Feedback</button>' : ""}
+        <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">Moon</button>
+        <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
+        <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
+        <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
+      </div>
     </div>
   </div>
 </header>`;
@@ -149,6 +166,38 @@
   }
 
   renderSiteShell();
+
+  const siteHeader = document.querySelector(".site-header");
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = window.matchMedia("(max-width: 720px)");
+
+  function updateMenuState(forceOpen) {
+    if (!siteHeader || !menuToggle) return;
+    const open = typeof forceOpen === "boolean" ? forceOpen : siteHeader.classList.contains("menu-open");
+    siteHeader.classList.toggle("menu-open", open);
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.textContent = open ? "Close" : "Menu";
+  }
+
+  if (menuToggle && siteHeader) {
+    menuToggle.addEventListener("click", () => {
+      updateMenuState(!siteHeader.classList.contains("menu-open"));
+    });
+
+    const handleMenuBreakpoint = () => {
+      if (!mobileMenu.matches) {
+        updateMenuState(false);
+      }
+    };
+
+    if (typeof mobileMenu.addEventListener === "function") {
+      mobileMenu.addEventListener("change", handleMenuBreakpoint);
+    } else if (typeof mobileMenu.addListener === "function") {
+      mobileMenu.addListener(handleMenuBreakpoint);
+    }
+
+    updateMenuState(false);
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {

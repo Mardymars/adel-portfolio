@@ -242,18 +242,22 @@ a:hover{
   box-shadow:0 10px 30px rgba(18,17,20,0.05);
 }
 
-.header-row{
+.site-shell{
+  display:grid;
+  gap:18px;
+}
+
+.header-top{
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:flex-start;
   gap:22px;
-  flex-wrap:wrap;
 }
 
 .brand{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:12px;
   min-width:280px;
 }
 
@@ -287,6 +291,19 @@ a:hover{
   justify-content:flex-end;
 }
 
+.header-panel{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.header-panel > :first-child{
+  flex:1 1 520px;
+  min-width:0;
+}
+
 .btn,
 .card-btn{
   appearance:none;
@@ -304,6 +321,10 @@ a:hover{
   min-width:48px;
   padding:10px 14px;
   box-shadow:0 8px 18px rgba(20,17,13,0.08);
+}
+
+.menu-toggle{
+  display:none;
 }
 
 .btn:hover,
@@ -997,18 +1018,88 @@ fieldset.field legend{
   }
 
   .site-header{
-    padding-top:14px;
-    padding-bottom:12px;
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+
+  .site-shell{
+    gap:10px;
+  }
+
+  .header-top{
+    align-items:center;
+    gap:12px;
+  }
+
+  .header-panel{
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    padding-top:10px;
+    border-top:1px solid var(--border);
+  }
+
+  .site-header.menu-open .header-panel{
+    display:flex;
+  }
+
+  .brand{
+    min-width:0;
+    flex:1 1 auto;
+    gap:8px;
+  }
+
+  .brand::after{
+    width:72px;
+  }
+
+  .name{
+    font-size:clamp(1.75rem, 7vw, 2.3rem);
   }
 
   .tagline{
-    letter-spacing:0.16em;
-    font-size:0.72rem;
+    letter-spacing:0.12em;
+    font-size:0.62rem;
+    line-height:1.35;
+  }
+
+  .menu-toggle{
+    display:inline-flex;
+    min-width:auto;
+    padding:8px 12px;
+    font-size:0.82rem;
+    flex-shrink:0;
+  }
+
+  .nav{
+    flex-wrap:nowrap;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:2px;
+    scrollbar-width:none;
+  }
+
+  .nav::-webkit-scrollbar{
+    display:none;
   }
 
   .nav-link{
-    font-size:0.72rem;
-    letter-spacing:0.08em;
+    padding:8px 12px;
+    font-size:0.66rem;
+    letter-spacing:0.06em;
+    white-space:nowrap;
+  }
+
+  .controls{
+    justify-content:flex-start;
+    gap:8px;
+  }
+
+  .controls .btn{
+    min-width:42px;
+    padding:8px 10px;
+    font-size:0.82rem;
   }
 
   section.container{
@@ -1045,6 +1136,27 @@ fieldset.field legend{
 
   .check-grid{
     grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:560px){
+  .tagline{
+    display:none;
+  }
+
+  .brand::after{
+    display:none;
+  }
+
+  .controls{
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:2px;
+    scrollbar-width:none;
+  }
+
+  .controls::-webkit-scrollbar{
+    display:none;
   }
 }
 
