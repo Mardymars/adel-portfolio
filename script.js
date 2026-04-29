@@ -43,18 +43,25 @@
     </div>
 
     <div class="header-panel" id="siteMenu">
-      <div>
+      <div class="menu-section nav-section">
+        <p class="menu-label">Navigate</p>
         <nav class="nav" aria-label="Primary navigation">
           ${navMarkup}
         </nav>
       </div>
 
-      <div class="controls" aria-label="Site controls">
-        ${feedbackEnabled ? '<button id="feedbackOpen" class="btn" type="button">Feedback</button>' : ""}
-        <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">Moon</button>
-        <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
-        <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
-        <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
+      <div class="menu-section tools-section">
+        <p class="menu-label">Display</p>
+        <div class="controls" aria-label="Site controls">
+          ${feedbackEnabled ? '<button id="feedbackOpen" class="btn" type="button">Feedback</button>' : ""}
+          <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">Moon</button>
+
+          <div class="text-size-group" role="group" aria-label="Text size">
+            <button id="textSmall" class="btn" type="button" aria-label="Smaller text">A-</button>
+            <button id="textNormal" class="btn" type="button" aria-label="Normal text">A</button>
+            <button id="textLarge" class="btn" type="button" aria-label="Larger text">A+</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -198,6 +205,14 @@
 
     updateMenuState(false);
   }
+
+  document.querySelectorAll(".site-header .nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (mobileMenu.matches) {
+        updateMenuState(false);
+      }
+    });
+  });
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {

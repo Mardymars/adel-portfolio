@@ -291,6 +291,16 @@ a:hover{
   justify-content:flex-end;
 }
 
+.text-size-group{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.text-size-group .btn{
+  min-width:44px;
+}
+
 .header-panel{
   display:flex;
   justify-content:space-between;
@@ -302,6 +312,20 @@ a:hover{
 .header-panel > :first-child{
   flex:1 1 520px;
   min-width:0;
+}
+
+.menu-section{
+  min-width:0;
+}
+
+.menu-label{
+  display:none;
+  margin:0 0 10px;
+  color:var(--accent-strong);
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
 }
 
 .btn,
@@ -1035,7 +1059,7 @@ fieldset.field legend{
     display:none;
     flex-direction:column;
     align-items:stretch;
-    gap:10px;
+    gap:12px;
     padding-top:10px;
     border-top:1px solid var(--border);
   }
@@ -1073,33 +1097,58 @@ fieldset.field legend{
   }
 
   .nav{
-    flex-wrap:nowrap;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:8px;
-    overflow-x:auto;
-    padding-bottom:2px;
-    scrollbar-width:none;
-  }
-
-  .nav::-webkit-scrollbar{
-    display:none;
   }
 
   .nav-link{
     padding:8px 12px;
     font-size:0.66rem;
     letter-spacing:0.06em;
-    white-space:nowrap;
+    justify-content:center;
+    text-align:center;
+    min-height:42px;
+  }
+
+  .menu-section{
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:rgba(255,255,255,0.34);
+  }
+
+  body.dark .menu-section{
+    background:rgba(255,255,255,0.03);
+  }
+
+  .menu-label{
+    display:block;
   }
 
   .controls{
-    justify-content:flex-start;
+    display:grid;
+    grid-template-columns:1fr;
+    justify-content:stretch;
     gap:8px;
   }
 
   .controls .btn{
-    min-width:42px;
-    padding:8px 10px;
+    min-width:0;
+    width:100%;
+    padding:9px 12px;
     font-size:0.82rem;
+    justify-content:center;
+  }
+
+  .text-size-group{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:8px;
+  }
+
+  .text-size-group .btn{
+    width:100%;
   }
 
   section.container{
@@ -1148,15 +1197,16 @@ fieldset.field legend{
     display:none;
   }
 
-  .controls{
-    overflow-x:auto;
-    flex-wrap:nowrap;
-    padding-bottom:2px;
-    scrollbar-width:none;
+  .nav{
+    grid-template-columns:1fr;
   }
 
-  .controls::-webkit-scrollbar{
-    display:none;
+  .menu-section{
+    padding:10px;
+  }
+
+  .menu-label{
+    margin-bottom:8px;
   }
 }
 
