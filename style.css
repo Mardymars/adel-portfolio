@@ -123,6 +123,19 @@ li+li{margin-top:.45em}
 .artifact-media{display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:8px}
 .artifact-caption{margin-top:10px}
 .artifact-bullets{margin-top:20px}
+.lab-artifact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.lab-artifact-card{min-width:0;display:flex;flex-direction:column;scroll-margin-top:110px}
+.lab-artifact-card h3{font-size:1.5em;line-height:1.2}
+.lab-artifact-card>.eyebrow{margin-bottom:14px}
+.lab-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0 0;padding:20px 0;border-block:1px solid var(--border)}
+.lab-proof dt{font-size:.7em;line-height:1.5;color:var(--muted)}
+.lab-proof dd{margin:7px 0 0;font:1.8em/1.2 Georgia,serif;color:var(--accent)}
+.lab-artifact-card .artifact-bullets{margin-bottom:20px}
+.lab-artifact-card .lab-tool-list{font-size:.78em;color:var(--accent);line-height:1.7;margin-top:auto;padding-top:12px}
+.lab-evidence-links{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-top:8px}
+.lab-evidence-links .text-link{font-size:.82em;gap:8px}
+.lab-evidence-links .button{font-size:.82em;gap:10px}
+.lab-artifact-card .lab-scope{font-size:.75em;margin:20px 0 0;padding-top:16px;border-top:1px solid var(--border)}
 .resume-callout{background:var(--soft);border:1px solid var(--border);padding:36px!important;border-radius:12px;display:flex;align-items:center;gap:36px;justify-content:space-between}
 .resume-callout .eyebrow{margin-bottom:12px}
 .resume-callout p:last-child{margin-bottom:0;color:var(--muted);font-size:.9em}
@@ -210,7 +223,7 @@ dialog h2{font-size:1.9em;padding-right:22px}
 .board-mark span{font-size:66px}
 .board-row strong{font-size:.85em}
 .board-row div>span{font-size:.72em}
-.project-grid,.cards,.cards-two,.metric-grid,.contact-section{grid-template-columns:1fr}
+.project-grid,.cards,.cards-two,.metric-grid,.contact-section,.lab-artifact-grid{grid-template-columns:1fr}
 .project-image,.fieldflow-art{height:190px}
 .project-body{padding:24px}
 .project-body h3{font-size:1.4em}
